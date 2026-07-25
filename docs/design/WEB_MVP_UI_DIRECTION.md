@@ -6,7 +6,7 @@
 | Direction | Prismatic Archive |
 | Related issue | [#4 — Original Arcaea-inspired UI direction](https://github.com/Dyu20705/arcaea-viewer/issues/4) |
 | Pull request | [#85](https://github.com/Dyu20705/arcaea-viewer/pull/85) |
-| Product contract | [`WEB_MVP_PRD.md`](../product/WEB_MVP_PRD.md) in PR #84 |
+| Product contract | [PR #84 — Web MVP product requirements](https://github.com/Dyu20705/arcaea-viewer/pull/84) |
 | Research evidence | [`UI_REFERENCE_RESEARCH.md`](UI_REFERENCE_RESEARCH.md) |
 | Public theme labels | Light, Dark, System |
 | Decision owner | Repository maintainer |
