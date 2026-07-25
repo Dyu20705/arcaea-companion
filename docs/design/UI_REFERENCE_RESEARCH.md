@@ -5,7 +5,7 @@
 | Status | Research complete; synthesis proposed for maintainer approval |
 | Related issue | [#4 — Research references and approve an original Arcaea-inspired UI direction](https://github.com/Dyu20705/arcaea-viewer/issues/4) |
 | Pull request | [#85](https://github.com/Dyu20705/arcaea-viewer/pull/85) |
-| Product dependency | [`WEB_MVP_PRD.md`](../product/WEB_MVP_PRD.md) in PR #84 |
+| Product dependency | [PR #84 — Web MVP product requirements](https://github.com/Dyu20705/arcaea-viewer/pull/84) |
 | Research date | 2026-07-25 |
 | Research owner | Repository maintainer with AI-assisted analysis |
 
