@@ -81,8 +81,10 @@ jobs:
           bash -n scripts/bootstrap-roadmap.sh
           bash -n tests/roadmap/test-bootstrap-roadmap.sh
           bash -n tests/roadmap/test-existing-number-map.sh
+          bash -n tests/roadmap/test-stage-gate-policy.sh
           bash tests/roadmap/test-bootstrap-roadmap.sh
           bash tests/roadmap/test-existing-number-map.sh
+          bash tests/roadmap/test-stage-gate-policy.sh
 
       - name: Live read-only roadmap plan
         shell: bash
@@ -91,5 +93,6 @@ jobs:
           bash scripts/bootstrap-roadmap.sh \
             --dry-run \
             --phase all \
+            --force-update \
             --start-date 2026-07-14 \
             --repo "$GITHUB_REPOSITORY"

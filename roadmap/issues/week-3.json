@@ -13,7 +13,7 @@
       "acceptanceCriteria": ["Every child issue has a clear owner, milestone, and acceptance criteria.", "Blocked work is represented using issue dependencies.", "The phase gate has explicit evidence."],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, or performance exception is introduced."],
       "parent": "web-mvp-roadmap",
-      "blockedBy": [],
+      "blockedBy": ["week-2-epic"],
       "assignees": ["Dyu20705"],
       "state": "open"
     },
