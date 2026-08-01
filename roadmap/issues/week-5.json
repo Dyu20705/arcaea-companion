@@ -1,1 +1,85 @@
-{"schemaVersion":1,"phase":"week-5","issues":[{"key":"week-5-epic","title":"[Epic · Week 5] Production quality pass","phase":"week-5","milestone":"week-5","labels":["type:epic","phase:5-quality","area:product","priority:p0"],"outcome":"Complete the production quality pass outcome without pulling later platform work into the current gate.","scope":["Own the phase dependency order.","Surface risks and scope cuts.","Close the phase only with evidence."],"nonGoals":[],"uxRequirements":[],"technicalConstraints":[],"acceptanceCriteria":["Every child issue has a clear owner, milestone, and acceptance criteria.","Blocked work is represented using issue dependencies.","The phase gate has explicit evidence."],"testPlan":[],"evidence":[],"definitionOfDone":["Acceptance criteria are verified.","Relevant documentation and tests are updated.","No unreviewed legal, accessibility, security, or performance exception is introduced."],"parent":"web-mvp-roadmap","blockedBy":["week-4-epic"],"assignees":["Dyu20705"],"state":"open","stateReason":null},{"key":"accessibility-performance","title":"[Week 5 · Quality] Accessibility, responsive, image, and Core Web Vitals pass","phase":"week-5","milestone":"week-5","labels":["type:qa","phase:5-quality","area:accessibility","area:performance","area:frontend","priority:p0","status:human-required"],"outcome":"Make the data-heavy, image-rich wiki comfortable across keyboard, assistive technology, desktop, and narrow viewports while meeting measured performance budgets.","scope":["WCAG-oriented audit of core routes.","Responsive and text zoom behavior.","Responsive image pipeline and layout stability.","Bundle and Core Web Vitals baseline plus budgets.","Reduced-motion behavior."],"nonGoals":[],"uxRequirements":[],"technicalConstraints":[],"acceptanceCriteria":["Core flows are keyboard-complete.","Automated accessibility checks have no critical violations.","Images have correct dimensions, alt decisions, formats, and lazy-loading behavior.","Performance report records target and observed values."],"testPlan":[],"evidence":[],"definitionOfDone":["Acceptance criteria are verified.","Relevant documentation and tests are updated.","No unreviewed legal, accessibility, security, or performance exception is introduced."],"parent":"week-5-epic","blockedBy":[],"assignees":["Dyu20705"],"state":"open","stateReason":null,"existingNumber":22},{"key":"pwa-offline","title":"[Week 5 · Quality] Static catalog PWA and offline update strategy","phase":"week-5","milestone":"week-5","labels":["type:feature","phase:5-quality","area:frontend","area:performance","priority:p1","status:agent-ready"],"outcome":"Provide safe installability and useful offline access to the app shell and last successful catalog snapshot.","scope":["Cache app shell and versioned static catalog.","Define update notification and stale-data behavior.","Avoid caching legal/takedown changes indefinitely.","Provide offline and storage-error UI."],"nonGoals":[],"uxRequirements":[],"technicalConstraints":[],"acceptanceCriteria":["Offline behavior is tested.","A new catalog version invalidates or migrates caches predictably.","The service worker cannot serve a removed asset forever.","PWA work does not block release if the P0 quality gate slips."],"testPlan":[],"evidence":[],"definitionOfDone":["Acceptance criteria are verified.","Relevant documentation and tests are updated.","No unreviewed legal, accessibility, security, or performance exception is introduced."],"parent":"week-5-epic","blockedBy":["web-shell","static-data-loader"],"assignees":["Dyu20705"],"state":"open","stateReason":null,"existingNumber":23},{"key":"security-hardening","title":"[Week 5 · Security] Browser, content, dependency, and supply-chain hardening","phase":"week-5","milestone":"week-5","labels":["type:qa","phase:5-quality","area:security","area:data","priority:p0","status:human-required"],"outcome":"Harden the static web product and its update/deployment pipeline without adding enterprise infrastructure.","scope":["Threat model static content, remote URLs, Markdown, images, service worker, and Actions.","Pin and minimize dependencies/actions.","Add dependency review, secret checks, content validation, and security policy.","Document hosting-header limitations and compensating controls."],"nonGoals":[],"uxRequirements":[],"technicalConstraints":[],"acceptanceCriteria":["No arbitrary HTML or unsafe URL protocol is accepted from catalog content.","Actions use least privilege.","Dependency and generated-artifact review steps are documented.","Security report lists residual risks."],"testPlan":[],"evidence":[],"definitionOfDone":["Acceptance criteria are verified.","Relevant documentation and tests are updated.","No unreviewed legal, accessibility, security, or performance exception is introduced."],"parent":"week-5-epic","blockedBy":[],"assignees":["Dyu20705"],"state":"open","stateReason":null,"existingNumber":25},{"key":"ops-feedback","title":"[Week 5 · Operations] Privacy-respecting runtime errors, feedback, and support diagnostics","phase":"week-5","milestone":"week-5","labels":["type:decision","phase:5-quality","area:release","area:security","area:community","priority:p1","status:human-required"],"outcome":"Decide how users report errors and how maintainers diagnose static-site failures without invasive tracking.","scope":["Define error boundary and support bundle fields.","Decide whether telemetry is absent or opt-in.","Provide issue-report template with redaction guidance.","Define uptime/link/catalog freshness checks."],"nonGoals":[],"uxRequirements":[],"technicalConstraints":[],"acceptanceCriteria":["No personal data is collected by default.","Reports exclude local secrets and browsing history.","Users can identify catalog version and app version.","Operational checks are documented."],"testPlan":[],"evidence":[],"definitionOfDone":["Acceptance criteria are verified.","Relevant documentation and tests are updated.","No unreviewed legal, accessibility, security, or performance exception is introduced."],"parent":"week-5-epic","blockedBy":[],"assignees":["Dyu20705"],"state":"open","stateReason":null,"existingNumber":28},{"key":"seo-discovery","title":"[Week 5 · Quality] SEO, structured metadata, social previews, sitemap, and canonical URLs","phase":"week-5","milestone":"week-5","labels":["type:task","phase:5-quality","area:frontend","area:performance","priority:p1","status:agent-ready"],"outcome":"Make public wiki pages discoverable and shareable without sacrificing performance or legal accuracy.","scope":["Per-route title/description/canonical metadata.","Open Graph and social image strategy.","Sitemap and robots policy.","Structured data only where semantically valid.","404 and GitHub Pages URL behavior."],"nonGoals":[],"uxRequirements":[],"technicalConstraints":[],"acceptanceCriteria":["Metadata is deterministic from catalog records.","No missing/unlicensed image is referenced in social metadata.","Canonical URLs are correct for deployment host/base path.","Automated tests cover representative pages."],"testPlan":[],"evidence":[],"definitionOfDone":["Acceptance criteria are verified.","Relevant documentation and tests are updated.","No unreviewed legal, accessibility, security, or performance exception is introduced."],"parent":"week-5-epic","blockedBy":["homepage","song-pack-pages","game-topics"],"assignees":["Dyu20705"],"state":"open","stateReason":null}]}
+{
+  "schemaVersion": 1,
+  "phase": "week-5",
+  "issues": [
+    {
+      "key": "week-5-epic",
+      "title": "[Epic · Week 5] Prototype quality, security, and controlled-preview readiness",
+      "phase": "week-5",
+      "milestone": "week-5",
+      "labels": ["type:epic", "phase:5-quality", "area:product", "priority:p0"],
+      "outcome": "Harden the complete synthetic prototype and prepare a controlled, non-indexed deployment suitable for review and a lowiro permission request.",
+      "scope": ["Accessibility, performance, security, privacy, offline, metadata, diagnostics, and preview controls."],
+      "nonGoals": [], "uxRequirements": [], "technicalConstraints": [],
+      "acceptanceCriteria": ["Representative routes pass quality gates.", "Synthetic-only and no-public-release constraints are enforced.", "Preview deployment requirements are documented.", "Permission-request evidence can reference stable prototype artifacts."],
+      "testPlan": [], "evidence": [],
+      "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
+      "parent": "web-mvp-roadmap", "blockedBy": ["week-4-epic"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null
+    },
+    {
+      "key": "accessibility-performance",
+      "title": "[Week 5 · Quality] Accessibility, responsive, image, and Core Web Vitals pass",
+      "phase": "week-5", "milestone": "week-5",
+      "labels": ["type:qa", "phase:5-quality", "area:accessibility", "area:performance", "area:frontend", "priority:p0", "status:human-required"],
+      "outcome": "Make the synthetic prototype comfortable across keyboard, assistive technology, desktop, and narrow viewports while meeting measured performance budgets.",
+      "scope": ["Core-route audit, zoom/responsive behavior, image/layout stability, bundle/Core Web Vitals budgets, and reduced motion."],
+      "nonGoals": [], "uxRequirements": [], "technicalConstraints": [],
+      "acceptanceCriteria": ["Core flows are keyboard-complete.", "Automated checks have no critical violations.", "Media and placeholders have correct dimensions/alt decisions.", "Target and observed performance are recorded."],
+      "testPlan": [], "evidence": [],
+      "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
+      "parent": "week-5-epic", "blockedBy": ["week-4-epic"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 22
+    },
+    {
+      "key": "pwa-offline",
+      "title": "[Week 5 · Quality] Static catalog PWA and offline update strategy",
+      "phase": "week-5", "milestone": "week-5",
+      "labels": ["type:feature", "phase:5-quality", "area:frontend", "area:performance", "priority:p1", "status:agent-ready"],
+      "outcome": "Evaluate and, only if reliable, provide offline access to the shell and last valid synthetic/approved catalog snapshot.",
+      "scope": ["Cache/version policy, update notice, stale state, storage errors, removal invalidation, and uninstall/rollback."],
+      "nonGoals": [], "uxRequirements": [], "technicalConstraints": [],
+      "acceptanceCriteria": ["Offline behavior is tested.", "Removed content is not retained indefinitely.", "PWA remains a scope cut if lifecycle reliability is insufficient."],
+      "testPlan": [], "evidence": [],
+      "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
+      "parent": "week-5-epic", "blockedBy": ["web-shell", "static-data-loader"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 23
+    },
+    {
+      "key": "security-hardening",
+      "title": "[Week 5 · Security] Browser, content, dependency, and supply-chain hardening",
+      "phase": "week-5", "milestone": "week-5",
+      "labels": ["type:qa", "phase:5-quality", "area:security", "area:data", "priority:p0", "status:human-required"],
+      "outcome": "Harden the static product, synthetic catalog, and deployment pipeline without enterprise-scale infrastructure.",
+      "scope": ["Threat model content/URLs/images/service worker/actions, pin dependencies/actions, secret/content checks, and hosting limitations."],
+      "nonGoals": [], "uxRequirements": [], "technicalConstraints": [],
+      "acceptanceCriteria": ["Unsafe HTML/protocols are rejected.", "Actions use least privilege.", "Protected-content and secret checks exist.", "Residual risks are documented."],
+      "testPlan": [], "evidence": [],
+      "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
+      "parent": "week-5-epic", "blockedBy": ["repo-quality"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 25
+    },
+    {
+      "key": "ops-feedback",
+      "title": "[Week 5 · Operations] Privacy-respecting errors, feedback, and support diagnostics",
+      "phase": "week-5", "milestone": "week-5",
+      "labels": ["type:decision", "phase:5-quality", "area:release", "area:security", "area:community", "priority:p1", "status:human-required"],
+      "outcome": "Define diagnostics and feedback for the static preview without invasive tracking.",
+      "scope": ["Error boundary, support bundle, telemetry decision, issue-report redaction, freshness/link checks."],
+      "nonGoals": [], "uxRequirements": [], "technicalConstraints": [],
+      "acceptanceCriteria": ["No personal data is collected by default.", "Reports exclude secrets/history.", "App/catalog/preview status is identifiable.", "Operational checks are documented."],
+      "testPlan": [], "evidence": [],
+      "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
+      "parent": "week-5-epic", "blockedBy": ["web-shell"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 28
+    },
+    {
+      "key": "seo-discovery",
+      "title": "[Week 5 · Quality] Preview metadata, noindex policy, and future public discovery",
+      "phase": "week-5", "milestone": "week-5",
+      "labels": ["type:task", "phase:5-quality", "area:frontend", "area:performance", "priority:p1", "status:agent-ready"],
+      "outcome": "Generate deterministic route metadata while keeping the pre-authorization synthetic preview non-indexed and non-promotional.",
+      "scope": ["Titles/descriptions/canonicals for synthetic routes, robots/noindex preview policy, social-preview exclusions, sitemap strategy for later activation, and base-path/404 behavior."],
+      "nonGoals": [], "uxRequirements": [], "technicalConstraints": [],
+      "acceptanceCriteria": ["Synthetic preview cannot be indexed as an Arcaea information source.", "No unapproved image or real-game claim enters metadata.", "Canonical/base paths are tested.", "Public sitemap/indexing activation is deferred to `public-release-activation`."],
+      "testPlan": [], "evidence": [],
+      "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
+      "parent": "week-5-epic", "blockedBy": ["homepage", "song-pack-pages", "game-topics"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 51
+    }
+  ]
+}
