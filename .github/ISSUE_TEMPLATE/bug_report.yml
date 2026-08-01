@@ -1,7 +1,7 @@
 name: Bug report
 description: Report reproducible incorrect behavior in Arcaea-Viewer.
 title: "[Bug] "
-labels: ["type:qa"]
+labels: ["type:bug", "status:needs-triage"]
 body:
   - type: markdown
     attributes:
@@ -38,9 +38,23 @@ body:
       required: true
 
   - type: textarea
+    id: impact
+    attributes:
+      label: Impact, frequency, and scope
+      description: Explain who or what is affected, whether the task is blocked or degraded, how often it occurs, whether it is a regression, and any known workaround.
+      placeholder: |
+        - Impacted user/task:
+        - Frequency: always / intermittent / once
+        - Scope: one route/record/environment or broader
+        - Regression: yes/no/unknown; last known good version
+        - Workaround:
+    validations:
+      required: true
+
+  - type: textarea
     id: current-behavior
     attributes:
-      label: Current behavior
+      label: Actual behavior
       description: Describe exactly what happened, including visible errors or incorrect data.
       placeholder: What did you observe?
     validations:
@@ -58,7 +72,7 @@ body:
     id: reproduction
     attributes:
       label: Minimal reproduction
-      description: Provide the smallest deterministic sequence that reproduces the problem.
+      description: Provide the smallest deterministic sequence that reproduces the problem. Include a minimal fixture or payload when safe and relevant.
       placeholder: |
         1. Start from commit/version ...
         2. Open route or run command ...
@@ -73,11 +87,12 @@ body:
       label: Environment
       description: Use N/A where a field does not apply.
       value: |
-        - Commit, branch, or deployment URL:
-        - OS:
+        - Commit, branch, app version, or deployment URL:
+        - OS and version:
         - Browser and version:
         - Device or viewport:
         - Node, pnpm, Rust, or wasm-pack version:
+        - Relevant feature flags, cache, or offline state:
       render: markdown
     validations:
       required: true
@@ -86,15 +101,15 @@ body:
     id: source-evidence
     attributes:
       label: Source or correctness evidence
-      description: For factual/content bugs, provide the official or reviewable source. For code bugs, provide the relevant fixture, test, or specification. Use N/A with a reason when not applicable.
+      description: For factual/content bugs, provide the official or reviewable source. For code bugs, provide the relevant fixture, test, specification, or invariant. Use N/A with a reason when not applicable.
     validations:
       required: true
 
   - type: textarea
     id: logs
     attributes:
-      label: Relevant logs
-      description: Paste only the minimal relevant output after removing tokens, paths, and private information.
+      label: Relevant logs, metrics, or traces
+      description: Paste only the minimal relevant output after removing tokens, local paths, account identifiers, and private information. Use N/A when no diagnostic output exists.
       render: shell
     validations:
       required: false
@@ -103,7 +118,7 @@ body:
     id: screenshots
     attributes:
       label: Screenshots or recordings
-      description: Upload evidence only when it contains no private or unlicensed material.
+      description: Upload sanitized evidence only when it contains no private, proprietary, or unlicensed material.
     validations:
       required: false
 
@@ -111,6 +126,6 @@ body:
     id: investigation
     attributes:
       label: Investigation notes
-      description: Optional. Include suspected cause, affected files, attempted fixes, or a proposed regression test.
+      description: Optional. Include suspected cause, affected files/contracts, attempted fixes, bisect result, or a proposed failing regression test.
     validations:
       required: false

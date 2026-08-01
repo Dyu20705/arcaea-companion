@@ -4,6 +4,8 @@ This directory is the declarative source for labels, milestones, issue content, 
 
 Execution readiness, stage gates, status-label semantics, WIP limits, closure, drift handling, and rollback are defined in [`docs/process/ROADMAP_OPERATING_MODEL.md`](../docs/process/ROADMAP_OPERATING_MODEL.md).
 
+Public intake, title conventions, required metadata, type-specific Definition of Ready/Done, workflow states, research/design handoff, PR traceability, and evidence safety are defined in [`docs/process/ISSUE_STANDARD.md`](../docs/process/ISSUE_STANDARD.md).
+
 - `issues.index.json` lists reviewable phase manifests under `roadmap/issues/` and owns the central `existingNumbers` map for legacy issues whose identity must not depend on body-marker discovery alone.
 - `issue-execution-guidance.json` adds the research, setup, implementation, UI/UX, data/backend, solo sequencing, validation, deliverable, and rollback sections rendered into managed issue bodies.
 - Phase manifests remain authoritative for product scope, labels, milestones, parents, blockers, state, and supersession.
@@ -87,9 +89,11 @@ bash -n scripts/bootstrap-roadmap.sh
 bash -n tests/roadmap/test-bootstrap-roadmap.sh
 bash -n tests/roadmap/test-existing-number-map.sh
 bash -n tests/roadmap/test-stage-gate-policy.sh
+bash -n tests/roadmap/test-issue-standard.sh
 bash tests/roadmap/test-bootstrap-roadmap.sh
 bash tests/roadmap/test-existing-number-map.sh
 bash tests/roadmap/test-stage-gate-policy.sh
+bash tests/roadmap/test-issue-standard.sh
 bash scripts/bootstrap-roadmap.sh \
   --dry-run \
   --phase all \
@@ -98,7 +102,7 @@ bash scripts/bootstrap-roadmap.sh \
   --repo Dyu20705/arcaea-viewer
 ```
 
-The CI roadmap job runs all shell test suites and then performs a live read-only dry-run against the repository. The tests cover shell-input rejection, guidance rendering and coverage, unknown guidance rejection, markerless legacy issue mapping, conflicting or duplicate issue numbers, GitHub-normalized milestone timestamps, live-state planning, duplicate-marker rejection, exact parent/dependency reconciliation, the sequential weekly phase chain, Week 2 foundation order, and the final release-content audit gate.
+The CI roadmap job runs all shell test suites and then performs a live read-only dry-run against the repository. The tests cover shell-input rejection, guidance rendering and coverage, unknown guidance rejection, markerless legacy issue mapping, conflicting or duplicate issue numbers, GitHub-normalized milestone timestamps, live-state planning, duplicate-marker rejection, exact parent/dependency reconciliation, the sequential weekly phase chain, Week 2 foundation order, the final release-content audit gate, public issue-form controls, taxonomy, ownership, hierarchy, acceptance criteria, and Definition of Done.
 
 After an authorized apply, run the same dry-run with `--force-update`. A complete reconciliation must contain only `no-op` label, milestone, issue, parent, and dependency plans, plus intentional skips for closed superseded records.
 
