@@ -39,6 +39,11 @@ for form in \
   require_file "$form"
 done
 
+if grep -R -n -E '^[[:space:]]*-[[:space:]]+type:[[:space:]]+upload[[:space:]]*$' \
+  "$ROOT/.github/ISSUE_TEMPLATE" --include='*.yml'; then
+  fail 'GitHub Issue Forms do not support type: upload; use a textarea for drag-and-drop evidence'
+fi
+
 grep -Fq 'id: reproduction' "$ROOT/.github/ISSUE_TEMPLATE/bug_report.yml" || fail 'bug form must require reproduction'
 grep -Fq 'id: environment' "$ROOT/.github/ISSUE_TEMPLATE/bug_report.yml" || fail 'bug form must collect environment'
 grep -Fq 'id: impact' "$ROOT/.github/ISSUE_TEMPLATE/bug_report.yml" || fail 'bug form must collect impact/frequency'
