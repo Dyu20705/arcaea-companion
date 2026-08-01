@@ -28,7 +28,7 @@ for label in \
   require_label "$label"
 done
 
-printf 'test: public intake uses structured issue forms\n'
+printf 'test: public intake uses schema-aware structured issue forms\n'
 for form in \
   .github/ISSUE_TEMPLATE/bug_report.yml \
   .github/ISSUE_TEMPLATE/feature_request.yml \
@@ -39,15 +39,9 @@ for form in \
   require_file "$form"
 done
 
-grep -Fq 'id: reproduction' "$ROOT/.github/ISSUE_TEMPLATE/bug_report.yml" || fail 'bug form must require reproduction'
-grep -Fq 'id: environment' "$ROOT/.github/ISSUE_TEMPLATE/bug_report.yml" || fail 'bug form must collect environment'
-grep -Fq 'id: impact' "$ROOT/.github/ISSUE_TEMPLATE/bug_report.yml" || fail 'bug form must collect impact/frequency'
-grep -Fq 'id: acceptance-criteria' "$ROOT/.github/ISSUE_TEMPLATE/feature_request.yml" || fail 'feature form must collect acceptance criteria'
-grep -Fq 'id: non-goals' "$ROOT/.github/ISSUE_TEMPLATE/feature_request.yml" || fail 'feature form must collect non-goals'
-grep -Fq 'id: source-evidence' "$ROOT/.github/ISSUE_TEMPLATE/data_correction.yml" || fail 'data correction form must collect sources'
-grep -Fq 'id: decision-output' "$ROOT/.github/ISSUE_TEMPLATE/research_design.yml" || fail 'research/design form must define its decision output'
-grep -Fq 'id: assistive-technology' "$ROOT/.github/ISSUE_TEMPLATE/accessibility_report.yml" || fail 'accessibility form must collect assistive technology context'
-grep -Fq 'blank_issues_enabled: false' "$ROOT/.github/ISSUE_TEMPLATE/config.yml" || fail 'blank issues must remain disabled'
+require_file tests/roadmap/validate-issue-forms.rb
+command -v ruby >/dev/null 2>&1 || fail 'Ruby is required for YAML issue-form validation'
+ruby "$ROOT/tests/roadmap/validate-issue-forms.rb" "$ROOT"
 
 printf 'test: active managed work is attributable and actionable\n'
 jq -s -e '
@@ -72,6 +66,8 @@ grep -Fq 'Ready for Development' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 
 grep -Fq 'In Review' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 'issue standard must define review state'
 grep -Fq 'Handoff standard' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 'issue standard must define handoff'
 grep -Fq 'Fixes #' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 'issue standard must define PR closure traceability'
+grep -Fq '[Research/Design]' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 'issue standard must define the combined untriaged research/design prefix'
+grep -Fq 'ROADMAP_OPERATING_MODEL.md' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 'issue standard must identify the canonical managed-workflow policy'
 grep -Fq 'ISSUE_STANDARD.md' "$ROOT/roadmap/README.md" || fail 'roadmap documentation must link the production issue standard'
 
 printf 'Production issue standard tests passed.\n'
