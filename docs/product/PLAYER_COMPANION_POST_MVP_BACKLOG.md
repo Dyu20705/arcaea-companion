@@ -6,13 +6,13 @@
 | --- | --- |
 | Program | Player inspiration, discovery, practice, and return loop |
 | Current state | Proposed backlog — not active roadmap issues |
-| Parent decision | #55 — Post-MVP expansion epic |
-| Activation gate | Web MVP 0.1 public-preview completion plus explicit maintainer approval |
+| Provisional coordination gate | #55 — current managed post-MVP epic; player-companion parentage is not yet approved |
+| Activation gate | Web MVP 0.1 public-preview completion, explicit maintainer approval, and a coordinated roadmap manifest/guidance change |
 | Product dependency | Trusted, versioned, maintainable wiki catalog |
 
 This backlog preserves the longer-term product direction without expanding the current six-week wiki MVP or prematurely creating managed issues.
 
-The candidate work packages below should become roadmap-managed issues only after their entry criteria are met. At activation time, each issue must receive complete execution guidance, parent/dependency relationships, labels, acceptance criteria, tests, evidence requirements, and a pinned issue number after reconciliation.
+The candidate work packages below should become roadmap-managed issues only after their entry criteria are met. At activation time, each issue must receive complete execution guidance, parent/dependency relationships, labels, acceptance criteria, tests, evidence requirements, and a pinned issue number after reconciliation. If #55 is retained as the parent gate, its canonical title, outcome, scope, and execution guidance must first be updated through the same focused roadmap change.
 
 ## Program outcome
 
@@ -208,7 +208,7 @@ Every published observation should identify:
 
 ## Candidate work package E — Companion program gate
 
-Before activating the implementation packages, create one roadmap-managed epic beneath #55 that owns:
+Before activating the implementation packages, approve the parent strategy. If #55 is retained, update its canonical manifest and execution guidance to include the player-companion program; otherwise select another approved managed parent. Then create one roadmap-managed companion epic that owns:
 
 - the approved player problem;
 - selected vertical slice;
@@ -237,18 +237,19 @@ Runtime, analytics, replay, and hosted services remain separate programs. They m
 
 When the program is approved:
 
-1. Convert the accepted work packages into `roadmap/issues/*.json` entries.
-2. Add exact execution guidance for every active issue before including the manifest.
-3. Run syntax, roadmap automation, existing-number, and stage-gate policy tests.
-4. Run a live read-only `--dry-run --force-update` plan.
-5. Confirm only intended post-MVP issue creations and relationships appear.
-6. Obtain explicit maintainer approval.
-7. Apply the roadmap change.
-8. Pin newly created issue numbers in `roadmap/issues.index.json` through a focused synchronization PR.
+1. Approve the managed parent strategy and update #55's canonical scope/guidance first if it remains the parent gate.
+2. Convert the accepted work packages into `roadmap/issues/*.json` entries.
+3. Add exact execution guidance for every active issue before including the manifest.
+4. Run syntax, roadmap automation, existing-number, and stage-gate policy tests.
+5. Run a live read-only `--dry-run --force-update` plan.
+6. Confirm only intended post-MVP issue creations and relationships appear.
+7. Obtain explicit maintainer approval.
+8. Apply the roadmap change.
+9. Pin newly created issue numbers in `roadmap/issues.index.json` through a focused synchronization PR.
 
 ## References
 
 - [Web MVP product brief](WEB_MVP_BRIEF.md)
 - [Wiki benchmark and product guardrails](WIKI_BENCHMARK_AND_PRODUCT_GUARDRAILS.md)
 - [Six-week Web MVP roadmap](../roadmap/WEB_MVP_ROADMAP.md)
-- [Post-MVP expansion epic #55](https://github.com/Dyu20705/arcaea-viewer/issues/55)
+- [Current managed post-MVP coordination gate #55](https://github.com/Dyu20705/arcaea-viewer/issues/55)
