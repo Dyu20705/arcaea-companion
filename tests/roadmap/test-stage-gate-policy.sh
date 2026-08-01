@@ -38,4 +38,8 @@ assert_blocked_by roadmap/issues/week-2.json asset-pipeline metadata-schema
 printf 'test: final QA waits for the frozen content and asset audit\n'
 assert_blocked_by roadmap/issues/week-6.json mvp-qa release-content-audit
 
+printf 'test: CI dry-run plans authoritative relationship removals\n'
+grep -Fq -- '--force-update' "$ROOT/.github/workflows/ci.yml" ||
+  fail 'CI roadmap dry-run must include --force-update'
+
 printf 'Stage-gate policy tests passed.\n'
