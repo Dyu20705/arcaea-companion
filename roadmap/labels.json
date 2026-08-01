@@ -144,27 +144,27 @@
     {
       "name": "status:needs-decision",
       "color": "fef2c0",
-      "description": "Requires a recorded decision before implementation"
+      "description": "Requires a recorded decision; dependencies still determine readiness"
     },
     {
       "name": "status:needs-design",
       "color": "d876e3",
-      "description": "Requires UX or visual design evidence"
+      "description": "Requires UX or visual evidence; dependencies still determine readiness"
     },
     {
       "name": "status:human-required",
       "color": "5319e7",
-      "description": "Needs maintainer judgment or manual evidence"
+      "description": "Requires maintainer judgment or manual evidence; may still be blocked"
     },
     {
       "name": "status:agent-ready",
       "color": "0e8a16",
-      "description": "Well-scoped for AI-assisted implementation"
+      "description": "Suitable for AI-assisted execution after all dependencies are complete"
     },
     {
       "name": "status:blocked",
       "color": "b60205",
-      "description": "Cannot start until dependencies are resolved"
+      "description": "Visual readiness hint; canonical blockedBy relationships are authoritative"
     }
   ]
 }
