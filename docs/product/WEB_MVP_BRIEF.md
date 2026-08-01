@@ -177,49 +177,18 @@ The project should invite contributions without pretending one maintainer can ma
 
 MVP community participation remains repository-based. Community observations, voting, device latency reports, Potential research, subjective difficulty, and personal recommendations remain post-MVP candidates and require governance, confidence, privacy, moderation, correction, and maintenance contracts before publication.
 
-## Post-MVP player companion direction
+## Post-MVP direction
 
-After the wiki MVP is stable, the project may develop into a local-first player companion that helps players gain inspiration, decide what to play, improve deliberately, and return to Arcaea through useful experiences.
+After the wiki MVP is stable, the project may evaluate content scale/localization, a local-first player companion, runtime/analysis, and optional platform services as separate programs.
 
-This direction should be evaluated as a separate product program with the following potential loop:
+The canonical player-companion proposal is [Player Companion Post-MVP Backlog](PLAYER_COMPANION_POST_MVP_BACKLOG.md). It owns the candidate value loop, work packages, entry criteria, privacy/governance constraints, and activation procedure; this brief intentionally does not duplicate them.
 
-```text
-Choose an intent or question
-        ↓
-Receive an explainable discovery or practice suggestion
-        ↓
-Play in Arcaea
-        ↓
-Record an optional local reflection
-        ↓
-Adapt the next suggestion without punitive pressure
-```
+Before any post-MVP program becomes active:
 
-Candidate capabilities include daily discovery, short-session planning, practice ladders, skill-demand profiles, local goals/reflections, confidence-aware community knowledge, device latency reports, Potential research, and richer lore/entity graphs.
+1. measure user value, catalog freshness, update burden, correction patterns, and maintenance cost without invasive tracking;
+2. select one sustainable vertical slice or make an explicit no-go decision;
+3. approve product, legal, privacy, accessibility, security, performance, moderation, operations, and maintenance boundaries;
+4. update the canonical roadmap manifest and execution guidance through a focused PR;
+5. preserve a fully usable static wiki fallback.
 
-The program must remain:
-
-- local-first by default;
-- explainable rather than black-box;
-- optional and fully separable from the public wiki;
-- free of punitive streaks, shame, forced urgency, or fabricated scarcity;
-- honest about subjective claims and confidence;
-- independent of scraping player accounts or protected services;
-- gated by product research, legal review, privacy/deletion behavior, maintenance capacity, and a small sustainable vertical slice.
-
-## Post-MVP sequence
-
-After the wiki MVP is stable, the project can grow in this order:
-
-1. measure wiki usage, catalog freshness, update burden, correction patterns, and player needs without invasive tracking;
-2. broaden versioned community-maintained content where maintenance capacity supports it;
-3. improve search, cross-linking, history, and localization;
-4. approve the player-companion strategy and its legal/privacy boundaries;
-5. prototype explainable discovery or practice support using the trusted catalog;
-6. add local-first goals, notes, reflection, export, deletion, and recovery only when they create measured value;
-7. evaluate community knowledge such as subjective difficulty, latency, and Potential research with explicit method and confidence;
-8. reconnect chart viewer and deterministic analytics surfaces only through legal inputs and isolated contracts;
-9. add optional hosted data/search services only when static delivery is proven insufficient;
-10. consider replay or personal analysis only after a separate privacy and supported-input decision.
-
-Each expansion must pass a separate product, legal, privacy, performance, accessibility, security, operations, and maintenance decision.
+No player-companion work is active under #55 until that canonical parent scope is explicitly updated or another managed parent is approved.
