@@ -114,11 +114,11 @@ body:
     validations:
       required: false
 
-  - type: textarea
+  - type: upload
     id: screenshots
     attributes:
       label: Screenshots or recordings
-      description: Optional. Drag and drop sanitized evidence here only when it contains no private, proprietary, or unlicensed material.
+      description: Upload sanitized evidence only when it contains no private, proprietary, or unlicensed material.
     validations:
       required: false
 
