@@ -13,7 +13,7 @@
       "acceptanceCriteria": ["Every child issue has a clear owner, milestone, and acceptance criteria.", "Blocked work is represented using issue dependencies.", "The phase gate has explicit evidence."],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, or performance exception is introduced."],
       "parent": "web-mvp-roadmap",
-      "blockedBy": [],
+      "blockedBy": ["week-1-epic"],
       "assignees": ["Dyu20705"],
       "state": "open"
     },
@@ -28,7 +28,7 @@
       "acceptanceCriteria": ["A clean checkout passes the documented command.", "CI uses least privilege and pinned actions.", "The public web build excludes hidden runtime routes and debug fixtures.", "Failures are actionable."],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, or performance exception is introduced."],
       "parent": "week-2-epic",
-      "blockedBy": [],
+      "blockedBy": ["week-1-epic"],
       "assignees": ["Dyu20705"],
       "state": "open",
       "existingNumber": 13
@@ -44,7 +44,7 @@
       "acceptanceCriteria": ["All MVP routes resolve to intentional states.", "Keyboard navigation and focus order are documented and tested.", "Theme switching avoids flash and respects system preference.", "Direct navigation works on GitHub Pages using the selected routing strategy."],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, or performance exception is introduced."],
       "parent": "week-2-epic",
-      "blockedBy": ["ui-research", "product-requirements"],
+      "blockedBy": ["rsbuild-migration", "design-system"],
       "assignees": ["Dyu20705"],
       "state": "open",
       "existingNumber": 5
@@ -105,7 +105,7 @@
       "acceptanceCriteria": ["Build fails for an asset without an approved record.", "Generated images stay within defined size budgets.", "Source originals are handled according to permission terms.", "Pages reserve dimensions to avoid layout shift."],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, or performance exception is introduced."],
       "parent": "week-2-epic",
-      "blockedBy": ["legal-provenance"],
+      "blockedBy": ["metadata-schema"],
       "assignees": ["Dyu20705"],
       "state": "open"
     }
