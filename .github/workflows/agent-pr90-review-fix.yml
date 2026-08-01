@@ -1,0 +1,64 @@
+name: Apply PR 90 review fixes
+
+on:
+  push:
+    branches:
+      - fix/week-3-public-pages-scope
+    paths:
+      - .github/workflows/agent-pr90-review-fix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-review-feedback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          ref: fix/week-3-public-pages-scope
+          fetch-depth: 0
+
+      - name: Make acceptance and validation criteria testable
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              Path("roadmap/issues/week-3.json"): {
+                  "Shared contracts can support Week 4 pages without making them part of this epic's completion gate.":
+                      "Week 3 page-template and view-model extension seams for Week 4 are documented and reviewed without adding Week 4 routes to this epic."
+              },
+              Path("roadmap/issue-execution-guidance.json"): {
+                  "Test home → explore → song/pack detail → related song/pack loops, representative missing-data paths, and the absence of partner/story/game-topic delivery requirements from the Week 3 gate.":
+                      "Test home → explore → song/pack detail → related song/pack loops and representative missing-data paths; verify the Week 3 epic scope and acceptance criteria contain no partner, story, or game-topic route deliverables."
+              },
+          }
+
+          for path, mapping in replacements.items():
+              text = path.read_text(encoding="utf-8")
+              for old, new in mapping.items():
+                  count = text.count(old)
+                  if count != 1:
+                      raise SystemExit(f"{path}: expected one match, found {count}")
+                  text = text.replace(old, new)
+              path.write_text(text, encoding="utf-8")
+          PY
+
+          jq -e '.issues[] | select(.key == "public-pages-epic") | any(.acceptanceCriteria[]; contains("documented and reviewed") and contains("without adding Week 4 routes"))' roadmap/issues/week-3.json >/dev/null
+          jq -e '.issues[] | select(.key == "public-pages-epic") | any(.validationSteps[]; contains("scope and acceptance criteria") and contains("no partner, story, or game-topic route deliverables"))' roadmap/issue-execution-guidance.json >/dev/null
+          git diff --check
+
+      - name: Commit review fixes
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add roadmap/issues/week-3.json roadmap/issue-execution-guidance.json
+          git diff --cached --check
+          git commit -m "fix(roadmap): make Week 3 scope checks verifiable"
+          git push origin HEAD:fix/week-3-public-pages-scope
