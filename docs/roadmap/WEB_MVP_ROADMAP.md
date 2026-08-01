@@ -14,7 +14,7 @@ The project uses a stage-gated hybrid:
 - weekly vertical increments keep the product testable;
 - each phase ends with evidence before the next phase becomes the priority;
 - competitor research is converted into reusable guardrails rather than copied feature lists;
-- attractive post-MVP ideas are recorded as separate issues instead of silently expanding an active issue.
+- attractive post-MVP ideas remain in an inactive backlog and are promoted to managed issues only through a focused approved roadmap change.
 
 The shared benchmark and content rules are documented in [Arcaea Wiki Benchmark and Product Guardrails](../product/WIKI_BENCHMARK_AND_PRODUCT_GUARDRAILS.md).
 
@@ -179,6 +179,8 @@ Do not cut legal provenance, original-content rules, catalog correctness, core l
 
 ## Beyond the MVP
 
+The four-program taxonomy below is documentation-level planning, not active managed scope. #55 currently governs runtime, analytics, replay, dataset, and platform expansion; activating player-companion children requires a focused canonical update to #55 or another approved managed parent.
+
 The roadmap retains post-MVP work for four distinct programs:
 
 1. **Content scale and localization** — broader reviewed content, richer history, correction operations, and localization after update burden is measured.
@@ -186,7 +188,7 @@ The roadmap retains post-MVP work for four distinct programs:
 3. **Runtime and analysis** — chart rendering, legal fixtures, deterministic metrics, and replay/personal analysis behind separate legal and privacy decisions.
 4. **Optional platform services** — hosted search, APIs, persistence, or synchronization only when measured static limits justify cost and operations.
 
-The player-companion program should start with research and one small explainable vertical slice, not an account system or black-box recommendation engine. Candidate work includes daily discovery, short-session planning, practice ladders, skill-demand profiles, optional local reflection, device latency knowledge, Potential research, and richer relationship graphs.
+The player-companion proposal is maintained in [Player Companion Post-MVP Backlog](../product/PLAYER_COMPANION_POST_MVP_BACKLOG.md). It should start with research and one small explainable vertical slice, not an account system or black-box recommendation engine; this roadmap intentionally does not duplicate or activate its work packages.
 
 Post-MVP work may begin only after Web MVP 0.1 passes the release gate and the relevant product, legal, privacy, accessibility, security, performance, moderation, operations, and maintenance decisions are approved.
 
