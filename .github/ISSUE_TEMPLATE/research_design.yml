@@ -1,0 +1,118 @@
+name: Research or design proposal
+description: Propose an evidence-gathering, feasibility, architecture, data, security, legal, or UX design outcome before implementation.
+title: "[Research/Design] "
+labels: ["status:needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when the main output is a report, experiment, ADR, prototype, contract, or explicit no-go decision—not implementation code.
+
+        Do not treat references as implementation templates or permission sources. Record uncertainty as `UNKNOWN — REQUIRES VALIDATION`.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues, ADRs, product documents, and the managed roadmap for equivalent work.
+          required: true
+        - label: The proposed output can be reviewed without private chat context or unsafe evidence.
+          required: true
+
+  - type: dropdown
+    id: work-type
+    attributes:
+      label: Proposed work type
+      options:
+        - Research / feasibility study
+        - Architecture or technical design
+        - Product or information-architecture decision
+        - UX or interaction design
+        - Data contract or schema design
+        - Security, privacy, legal, or operational decision
+        - Not sure — requires triage
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Decision question or problem
+      description: State the exact uncertainty, decision, or design boundary this work must resolve.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and user/system impact
+      description: Explain why the decision is needed now, who or what is affected, and what downstream work is blocked.
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints and non-goals
+      description: Include product, compatibility, cost, maintenance, accessibility, security, privacy, legal, data, and schedule boundaries where relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence-plan
+    attributes:
+      label: Evidence and evaluation plan
+      description: List primary sources, repository evidence, experiments, measurements, prototypes, and comparison criteria.
+      placeholder: |
+        - Evidence/source:
+        - Method:
+        - Decision threshold:
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives to evaluate
+      description: Include the status quo and the smallest viable option; avoid presenting a preferred solution as already approved.
+    validations:
+      required: true
+
+  - type: textarea
+    id: decision-output
+    attributes:
+      label: Required decision output
+      description: Define the committed artifact and the exact questions it must answer.
+      placeholder: ADR, research report, prototype with validation notes, schema contract, or explicit no-go record.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: List objective conditions for closing the research/design issue.
+      placeholder: |
+        - [ ] Evidence and method are reproducible.
+        - [ ] Alternatives and limitations are recorded.
+        - [ ] Maintainer decision is explicit.
+        - [ ] Downstream handoff is linked.
+    validations:
+      required: true
+
+  - type: textarea
+    id: handoff
+    attributes:
+      label: Downstream handoff
+      description: Identify affected routes, files, records, interfaces, child issues, approvals, and the information engineering must receive.
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks, unknowns, and rollback
+      description: State how a wrong decision would be detected, reversed, or contained.
+    validations:
+      required: true
