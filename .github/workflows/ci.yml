@@ -7,17 +7,17 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   frontend:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout pull request branch
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
-          persist-credentials: false
+          ref: ${{ github.head_ref }}
 
       - name: Setup Node
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
@@ -33,11 +33,17 @@ jobs:
       - name: Generate dependency lock
         run: pnpm install --no-frozen-lockfile
 
-      - name: Emit generated lockfile
+      - name: Commit generated lockfile
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
-          printf 'LOCKFILE_BASE64='
-          base64 -w 0 pnpm-lock.yaml
-          printf '\n'
+          git add pnpm-lock.yaml
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: add frontend lockfile"
+          git push origin "HEAD:${{ github.head_ref }}"
 
       - name: Check frontend
         run: pnpm check
