@@ -147,10 +147,10 @@ body:
     validations:
       required: false
 
-  - type: textarea
+  - type: upload
     id: references
     attributes:
       label: Mockups or screenshots
-      description: Optional. Drag and drop sanitized visual evidence here. Do not upload copied UI/assets as an implementation template or permission source.
+      description: Optional sanitized visual evidence. Do not upload copied UI/assets as an implementation template or permission source.
     validations:
       required: false
