@@ -30,8 +30,14 @@ jobs:
         with:
           version: 10.32.1
 
-      - name: Install dependencies
+      - name: Generate dependency lock
         run: pnpm install --no-frozen-lockfile
+
+      - name: Emit generated lockfile
+        run: |
+          printf 'LOCKFILE_BASE64='
+          base64 -w 0 pnpm-lock.yaml
+          printf '\n'
 
       - name: Check frontend
         run: pnpm check
