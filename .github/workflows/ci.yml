@@ -93,5 +93,6 @@ jobs:
           bash scripts/bootstrap-roadmap.sh \
             --dry-run \
             --phase all \
+            --force-update \
             --start-date 2026-07-14 \
             --repo "$GITHUB_REPOSITORY"
