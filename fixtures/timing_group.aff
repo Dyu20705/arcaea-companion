@@ -1,5 +1,0 @@
-timing(0,120.000,4);
-timinggroup(noinput,noclip){
-timing(0,180.000,4);
-(1000,2);
-};
