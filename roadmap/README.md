@@ -2,6 +2,8 @@
 
 This directory is the declarative source for labels, milestones, issue content, sub-issues, issue dependencies, and solo-execution guidance.
 
+Execution readiness, stage gates, status-label semantics, WIP limits, closure, drift handling, and rollback are defined in [`docs/process/ROADMAP_OPERATING_MODEL.md`](../docs/process/ROADMAP_OPERATING_MODEL.md).
+
 - `issues.index.json` lists reviewable phase manifests under `roadmap/issues/` and owns the central `existingNumbers` map for legacy issues whose identity must not depend on body-marker discovery alone.
 - `issue-execution-guidance.json` adds the research, setup, implementation, UI/UX, data/backend, solo sequencing, validation, deliverable, and rollback sections rendered into managed issue bodies.
 - Phase manifests remain authoritative for product scope, labels, milestones, parents, blockers, state, and supersession.
@@ -33,6 +35,12 @@ Every open non-epic issue outside the cleanup phase must have a matching record 
 - the resolved guidance is missing a non-empty required execution section.
 
 The guidance manifest has shared defaults plus issue-specific additions. Keep repeated professional workflow requirements in `defaults`; keep domain decisions, commands, research targets, UI states, data responsibilities, and rollback details in the keyed issue entry.
+
+## Readiness and stage gates
+
+Canonical `blockedBy` relationships determine whether an issue is Ready. Labels such as `status:agent-ready`, `status:human-required`, and `status:needs-design` describe execution or review requirements and do not override unresolved dependencies.
+
+The weekly epic chain is intentionally sequential from Week 1 discovery through Week 6 release. Later-phase research may start when independent, but implementation must not bypass the preceding phase gate. The CI stage-gate policy test prevents accidental removal of this critical path and the final content-audit dependency.
 
 ## Safety model
 
@@ -78,8 +86,10 @@ jq -e '.schemaVersion == 1' roadmap/issue-execution-guidance.json
 bash -n scripts/bootstrap-roadmap.sh
 bash -n tests/roadmap/test-bootstrap-roadmap.sh
 bash -n tests/roadmap/test-existing-number-map.sh
+bash -n tests/roadmap/test-stage-gate-policy.sh
 bash tests/roadmap/test-bootstrap-roadmap.sh
 bash tests/roadmap/test-existing-number-map.sh
+bash tests/roadmap/test-stage-gate-policy.sh
 bash scripts/bootstrap-roadmap.sh \
   --dry-run \
   --phase all \
@@ -88,7 +98,7 @@ bash scripts/bootstrap-roadmap.sh \
   --repo Dyu20705/arcaea-viewer
 ```
 
-The CI roadmap job runs both shell test suites and then performs a live read-only dry-run against the repository. The tests cover shell-input rejection, guidance rendering and coverage, unknown guidance rejection, markerless legacy issue mapping, conflicting or duplicate issue numbers, GitHub-normalized milestone timestamps, live-state planning, duplicate-marker rejection, and exact parent/dependency reconciliation.
+The CI roadmap job runs all shell test suites and then performs a live read-only dry-run against the repository. The tests cover shell-input rejection, guidance rendering and coverage, unknown guidance rejection, markerless legacy issue mapping, conflicting or duplicate issue numbers, GitHub-normalized milestone timestamps, live-state planning, duplicate-marker rejection, exact parent/dependency reconciliation, the sequential weekly phase chain, Week 2 foundation order, and the final release-content audit gate.
 
 After an authorized apply, run the same dry-run with `--force-update`. A complete reconciliation must contain only `no-op` label, milestone, issue, parent, and dependency plans, plus intentional skips for closed superseded records.
 
