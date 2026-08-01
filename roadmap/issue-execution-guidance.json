@@ -210,7 +210,7 @@
       "implementationSteps": ["Define reusable Week 3 page shells, provenance blocks, song/pack related-link patterns, media states, and domain view-model contracts; expose explicit extension seams for later encyclopedia pages instead of implementing them here."],
       "uiUxTasks": ["Prevent dead ends across home, explore, song, and pack journeys, preserve back/share context, and keep dense facts readable without copying conventional wiki clutter."],
       "dataBackendTasks": ["Require all Week 3 public-page data to come from validated static records/indexes, expose unknown/version state explicitly, and keep Week 4 entity data behind the later phase boundary."],
-      "validationSteps": ["Test home → explore → song/pack detail → related song/pack loops, representative missing-data paths, and the absence of partner/story/game-topic delivery requirements from the Week 3 gate."],
+      "validationSteps": ["Test home → explore → song/pack detail → related song/pack loops and representative missing-data paths; verify the Week 3 epic scope and acceptance criteria contain no partner, story, or game-topic route deliverables."],
       "deliverables": ["Week 3 shared page-template contracts, song/pack relation map, state matrix, cross-route acceptance evidence, and documented extension seams for Week 4."],
       "risksAndRollback": ["Reject scope expansion that makes Week 3 depend on partner, story, or game-topic delivery; revert the focused manifest/guidance change if reconciliation produces any unrelated issue update."]
     },
