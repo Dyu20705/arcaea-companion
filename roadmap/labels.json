@@ -32,6 +32,31 @@
       "description": "Verification, testing, or release evidence"
     },
     {
+      "name": "type:bug",
+      "color": "d73a4a",
+      "description": "Reproducible incorrect behavior or regression"
+    },
+    {
+      "name": "type:research",
+      "color": "cfd3d7",
+      "description": "Evidence collection and feasibility analysis without implementation commitment"
+    },
+    {
+      "name": "type:design",
+      "color": "d4c5f9",
+      "description": "Architecture, UX, data, security, or interface design artifact"
+    },
+    {
+      "name": "type:chore",
+      "color": "ededed",
+      "description": "Repository maintenance with no direct product behavior change"
+    },
+    {
+      "name": "type:tech-debt",
+      "color": "bfd4f2",
+      "description": "Measured maintainability, reliability, or operability debt"
+    },
+    {
       "name": "phase:1-discovery",
       "color": "d4c5f9",
       "description": "Week 1 product, data, legal, and design gate"
@@ -140,6 +165,11 @@
       "name": "priority:p2",
       "color": "fbca04",
       "description": "Useful but can be cut from the preview"
+    },
+    {
+      "name": "status:needs-triage",
+      "color": "ededed",
+      "description": "New intake awaiting duplicate, scope, priority, owner, and roadmap review"
     },
     {
       "name": "status:needs-decision",
