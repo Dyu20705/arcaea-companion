@@ -1,0 +1,111 @@
+name: Apply Week 3 public-pages scope fix
+
+on:
+  push:
+    branches:
+      - fix/week-3-public-pages-scope
+    paths:
+      - .github/workflows/agent-week3-scope-fix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-canonical-roadmap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout focused branch
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          ref: fix/week-3-public-pages-scope
+          fetch-depth: 0
+
+      - name: Coordinate manifest and execution guidance
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest_path = Path("roadmap/issues/week-3.json")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          issue = next(item for item in manifest["issues"] if item["key"] == "public-pages-epic")
+          issue["title"] = "[Epic · Week 3] Core public wiki pages and related-entity flow"
+          issue["outcome"] = (
+              "Deliver a coherent Week 3 player-facing flow across the homepage, explore catalog, "
+              "songs, and packs while defining reusable contracts for later encyclopedia pages."
+          )
+          issue["scope"] = [
+              "Own shared page templates and related navigation for the homepage, explore, song, and pack surfaces.",
+              "Define extension seams for Week 4 encyclopedia pages without delivering partner, story, or game-topic routes in this gate.",
+              "Keep content sourced from the validated static catalog.",
+              "Require accessibility, responsive, and image states on every Week 3 page.",
+          ]
+          issue["nonGoals"] = [
+              "Deliver partner, story, or game-topic pages; those outcomes remain under the Week 4 epic."
+          ]
+          issue["acceptanceCriteria"] = [
+              "Home → explore → song or pack detail flow works.",
+              "Week 3 pages show provenance/review status where appropriate.",
+              "Missing optional data degrades gracefully.",
+              "Shared contracts can support Week 4 pages without making them part of this epic's completion gate.",
+              "No page depends on chart runtime.",
+          ]
+          manifest_path.write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          guidance_path = Path("roadmap/issue-execution-guidance.json")
+          guidance = json.loads(guidance_path.read_text(encoding="utf-8"))
+          entry = next(item for item in guidance["issues"] if item["key"] == "public-pages-epic")
+          entry["researchTasks"] = [
+              "Map shared player questions and related-entity relationships for the Week 3 homepage, explore, song, and pack flow; document extension needs for Week 4 without absorbing its delivery scope."
+          ]
+          entry["implementationSteps"] = [
+              "Define reusable Week 3 page shells, provenance blocks, song/pack related-link patterns, media states, and domain view-model contracts; expose explicit extension seams for later encyclopedia pages instead of implementing them here."
+          ]
+          entry["uiUxTasks"] = [
+              "Prevent dead ends across home, explore, song, and pack journeys, preserve back/share context, and keep dense facts readable without copying conventional wiki clutter."
+          ]
+          entry["dataBackendTasks"] = [
+              "Require all Week 3 public-page data to come from validated static records/indexes, expose unknown/version state explicitly, and keep Week 4 entity data behind the later phase boundary."
+          ]
+          entry["validationSteps"] = [
+              "Test home → explore → song/pack detail → related song/pack loops, representative missing-data paths, and the absence of partner/story/game-topic delivery requirements from the Week 3 gate."
+          ]
+          entry["deliverables"] = [
+              "Week 3 shared page-template contracts, song/pack relation map, state matrix, cross-route acceptance evidence, and documented extension seams for Week 4."
+          ]
+          entry["risksAndRollback"] = [
+              "Reject scope expansion that makes Week 3 depend on partner, story, or game-topic delivery; revert the focused manifest/guidance change if reconciliation produces any unrelated issue update."
+          ]
+          guidance_path.write_text(
+              json.dumps(guidance, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          assert issue["phase"] == "week-3"
+          assert issue["milestone"] == "week-3"
+          assert issue["parent"] == "week-3-epic"
+          assert "Weeks 3–4" not in issue["title"]
+          assert "partners, story, and game topics" not in issue["outcome"]
+          assert any("Week 4" in item for item in issue["nonGoals"])
+          assert any("Week 4" in item for item in entry["researchTasks"])
+          PY
+
+          jq -e '.issues[] | select(.key == "public-pages-epic") | .phase == "week-3" and .milestone == "week-3" and .parent == "week-3-epic"' roadmap/issues/week-3.json >/dev/null
+          jq -e '.issues[] | select(.key == "public-pages-epic") | (.researchTasks | length == 1) and (.risksAndRollback | length == 1)' roadmap/issue-execution-guidance.json >/dev/null
+          git diff --check
+
+      - name: Commit coordinated edit
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add roadmap/issues/week-3.json roadmap/issue-execution-guidance.json
+          git diff --cached --check
+          git commit -m "fix(roadmap): align public pages epic with Week 3"
+          git push origin HEAD:fix/week-3-public-pages-scope
