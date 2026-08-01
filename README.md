@@ -4,6 +4,8 @@ Arcaea-Viewer is an unofficial, community-oriented Arcaea fan project.
 
 The current product direction is **Web MVP 0.1**: a fast, accessible, source-aware, static wiki for ordinary Arcaea players. The repository also preserves an existing Rust/WebAssembly chart parsing and rendering prototype, but that runtime work is not the public MVP focus.
 
+A possible longer-term direction is a broader fan-made player companion that can help players find inspiration, decide what to play, improve deliberately, and return to Arcaea through useful, explainable experiences. This proposal is explicitly post-MVP and must not expand the current wiki release gate.
+
 > Arcaea-Viewer is not affiliated with, sponsored by, approved by, or endorsed by lowiro or the official Arcaea project.
 
 ## Product direction
@@ -14,26 +16,31 @@ The Web MVP should let a visitor:
 - search and filter a versioned catalog;
 - open useful song, pack, partner, story, and game-topic pages;
 - navigate between related entities;
-- see source, review, uncertainty, and update status;
+- see source, review, uncertainty, platform/version applicability, and update status;
+- distinguish verified facts, original summaries, unknown, disputed, stale, and historical information;
 - use keyboard-friendly navigation and supported light/dark themes;
-- receive clear loading, empty, unavailable, error, and not-found states.
+- receive clear loading, empty, unavailable, error, missing-media, and not-found states.
 
 The MVP is intentionally static and does **not** include:
 
 - user accounts or application-hosted user-generated content;
+- personal recommendations, progression tracking, practice planning, score history, or retention mechanics;
 - a production backend or database server;
 - chart upload, editing, playback, analytics, or replay;
 - audio previews;
-- automatic scraping of third-party wikis;
+- automatic scraping of official services or third-party wikis;
+- copied third-party wiki prose, layouts, templates, media, or database exports;
 - redistribution of unlicensed game assets;
 - infrastructure added only to appear production-grade.
 
-The planned public catalog uses static, versioned data with schemas, validation, generated indexes, and explicit provenance.
+The planned public catalog uses static, versioned data with schemas, validation, generated indexes, explicit provenance, and deterministic publication/rollback.
 
 Governing documents:
 
 - [Project charter](docs/product/PROJECT_CHARTER.md)
 - [Web MVP product brief](docs/product/WEB_MVP_BRIEF.md)
+- [Wiki benchmark and product guardrails](docs/product/WIKI_BENCHMARK_AND_PRODUCT_GUARDRAILS.md)
+- [Proposed player-companion post-MVP backlog](docs/product/PLAYER_COMPANION_POST_MVP_BACKLOG.md)
 - [Six-week Web MVP roadmap](docs/roadmap/WEB_MVP_ROADMAP.md)
 - [Contribution workflow](CONTRIBUTING.md)
 - [Workflow validation](docs/process/WORKFLOW_VALIDATION.md)
@@ -60,7 +67,7 @@ This is proof of technical integration, not the final public wiki interface. The
 - `crates/wasm`: versioned JSON DTO/envelope boundary.
 - `apps/web`: current React/Vite application.
 - `roadmap/`: declarative labels, milestones, issues, parents, and dependencies.
-- `docs/product/`: product brief and project charter.
+- `docs/product/`: product brief, charter, benchmark, and product guardrails.
 - `docs/process/`: reusable workflow evidence.
 - `docs/roadmap/`: stage-gated MVP delivery plan.
 
@@ -129,7 +136,9 @@ A successful exit code is necessary but not sufficient for the live dry-run. Rev
 
 Current runtime tests use hand-written fixtures under `fixtures/`. Core tests do not require copyrighted game assets.
 
-Official chart files, audio, proprietary game resources, copied third-party wiki prose, and unlicensed media must not be committed as ordinary project data.
+Official chart files, audio, proprietary game resources, copied third-party wiki prose, copied database exports, and unlicensed media must not be committed as ordinary project data.
+
+Existing community wikis may be studied for user tasks, strengths, and failure modes. They are not implementation templates or permission sources. Facts selected for publication must follow the project source hierarchy and independent review requirements.
 
 ## Current limitations
 
@@ -137,27 +146,29 @@ Official chart files, audio, proprietary game resources, copied third-party wiki
 - The current web screen remains a chart-viewer debug prototype.
 - The AFF parser supports only the documented subset.
 - The SVG renderer is a deterministic technical preview, not official Arcaea scroll physics.
-- No production backend, user account system, complete public metadata catalog, replay, audio synchronization, or public analytics is included.
+- No production backend, user account system, complete public metadata catalog, replay, audio synchronization, public analytics, recommendation, or progression system is included.
 - Planned features must not be described as completed functionality.
 
 ## Roadmap
 
 The current six-week sequence is:
 
-1. product, data, legal, workflow, and UI discovery;
+1. product, data, legal, workflow, competitor guardrails, and UI discovery;
 2. web foundation and validated static catalog;
 3. homepage, explore, song, and pack flows;
-4. partner, story, and game-topic encyclopedia surfaces;
-5. accessibility, performance, SEO, security, and offline quality;
+4. partner, story, game-topic, and versioned content surfaces;
+5. accessibility, performance, SEO, security, offline, and freshness quality;
 6. public preview, content audit, deployment, rollback, and community readiness.
 
-Runtime viewer, analytics, replay, production backend, and larger platform work remain outside the MVP critical path.
+Runtime viewer, analytics, replay, personal progression, recommendation, production backend, and larger platform work remain outside the MVP critical path.
+
+The proposed post-MVP taxonomy separates content scale/localization, player-companion, runtime/analysis, and optional platform-service programs. It is planning guidance, not active managed scope; each program requires measured user value, explicit legal/privacy/maintenance decisions, and a focused roadmap change before activation.
 
 ## Contributing
 
 Contributions are welcome when they are scoped, evidence-backed, and consistent with the wiki-first roadmap. Read [CONTRIBUTING.md](CONTRIBUTING.md) before starting significant work.
 
-Do not submit secrets, private account information, proprietary game files, copied third-party prose, unlicensed media, or fabricated facts, permissions, sources, and test results.
+Do not submit secrets, private account information, proprietary game files, copied third-party prose, copied page/table structures, unlicensed media, scraped datasets, or fabricated facts, permissions, sources, and test results.
 
 ## Corrections, security, and takedown requests
 
