@@ -11,14 +11,15 @@
 
 This document converts competitor research into reusable product, content, data, UX, and maintenance rules. It is not permission to copy third-party prose, layouts, media, databases, or community conclusions.
 
-The reviewed references are:
+Representative evidence reviewed:
 
-- [Arcaea Wiki on Fandom](https://arcaea.fandom.com/wiki/Arcaea_Wiki)
+- [Arcaea Wiki home on Fandom](https://arcaea.fandom.com/wiki/Arcaea_Wiki)
+- [Fandom Basic Guide](https://arcaea.fandom.com/wiki/Basic_Guide)
 - [Wikipedia: Arcaea](https://en.wikipedia.org/wiki/Arcaea)
-- [Arcaea Fan Wiki on Miraheze](https://arcaea.miraheze.org/wiki/Arcaea_Fan_Wiki)
+- [Miraheze song-page example: Purgatorium](https://arcaea.miraheze.org/wiki/Purgatorium)
 - [Japanese Arcaea Wiki on WikiWiki](https://wikiwiki.jp/arcaea/)
 
-Research findings are observations of public product behavior at the snapshot date. Facts intended for publication in Arcaea-Viewer still require the source hierarchy and approval process owned by the legal/provenance work.
+This was a qualitative product review, not an exhaustive content, licensing, accessibility, or usability audit. Public pages and community conclusions can change after the snapshot date. These references support observations about user tasks and presentation patterns only; facts intended for publication in Arcaea-Viewer still require the source hierarchy, independent verification, and approval process owned by the legal/provenance work.
 
 ## 1. Product boundary
 
@@ -34,7 +35,7 @@ The MVP must provide fast retrieval, coherent relationships, version-aware facts
 
 ### Post-MVP direction
 
-After the wiki is stable, Arcaea-Viewer may become a broader fanmade player companion that helps players:
+After the wiki is stable, Arcaea-Viewer may become a broader fan-made player companion that helps players:
 
 - regain inspiration;
 - decide what to play;
@@ -317,55 +318,13 @@ Corrections must not silently erase why a previous value was published.
 
 The player-companion direction is intentionally deferred until the wiki public preview is stable. It should be evaluated as a separate product program, not appended casually to entity pages.
 
-### Candidate value loop
+The canonical proposal—including the candidate value loop, work packages, entry criteria, privacy/governance rules, and activation procedure—is maintained in [Player Companion Post-MVP Backlog](PLAYER_COMPANION_POST_MVP_BACKLOG.md). This benchmark adds only the cross-cutting constraints:
 
-```text
-Choose an intent or question
-        ↓
-Receive an explainable discovery or practice suggestion
-        ↓
-Play in Arcaea
-        ↓
-Record an optional local reflection
-        ↓
-Adapt the next suggestion without punitive pressure
-```
-
-### Candidate capabilities
-
-- daily or situational song discovery;
-- short-session planning;
-- explainable practice ladders and bridge songs;
-- skill taxonomy and chart-demand profiles;
-- local-first goals, notes, and reflections;
-- confidence-aware community observations;
-- device-specific latency knowledge;
-- Potential and chart-constant research with method and uncertainty;
-- official outbound listening and source links;
-- lore and relationship graph exploration.
-
-### Required principles
-
-- no account or upload by default;
-- local-first storage, export, deletion, and recovery;
-- no scraping of player accounts or protected services;
-- no unexplainable recommendation score;
-- no punitive streaks, shame, forced urgency, or fabricated scarcity;
-- no subjective recommendation presented as official truth;
-- no chart/runtime dependency until legal inputs and user value are approved;
-- preserve a fully usable wiki when post-MVP services or personal data are unavailable.
-
-### Entry criteria
-
-The program may begin only when:
-
-1. Web MVP 0.1 has passed the release gate;
-2. catalog freshness and maintenance cost have been measured;
-3. player research identifies a concrete problem beyond lookup;
-4. legal inputs and prohibited data paths are documented;
-5. privacy and deletion behavior are approved;
-6. the smallest useful vertical slice is sustainable for one maintainer;
-7. success can be measured without invasive tracking.
+- verified catalog facts and subjective/community observations remain separate;
+- no account, upload, protected-service scraping, or opaque recommendation is required by default;
+- personal state is local-first, inspectable, exportable, and removable when introduced;
+- the static public wiki remains fully usable when every companion capability is disabled or unavailable;
+- no work package becomes active until a focused canonical roadmap change is approved.
 
 ## 7. Review checklist for every content-facing issue
 
@@ -394,7 +353,7 @@ MVP implications:
 
 Post-MVP implications:
 
-- #55 remains the parent expansion gate.
-- New player-companion issues define strategy, explainable discovery/practice, local-first progress, and community knowledge separately from runtime/backend expansion.
+- #55 is the current managed post-MVP coordination gate, but its canonical title, outcome, scope, and execution guidance do not yet authorize player-companion children.
+- Before activation, a focused roadmap PR must either update #55's canonical manifest and guidance or select another approved managed parent, then create complete player-companion issues separately from runtime/backend expansion.
 
 When this document conflicts with an approved PRD, charter, legal decision, or roadmap gate, record the conflict and obtain maintainer approval before changing scope.
