@@ -27,7 +27,7 @@
       "acceptanceCriteria": ["A clean checkout passes the command.", "CI is least privilege and pinned.", "Synthetic content validation runs before build.", "Public bundles exclude runtime/debug fixtures."],
       "testPlan": [], "evidence": [],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
-      "parent": "week-2-epic", "blockedBy": ["product-requirements"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 13
+      "parent": "week-2-epic", "blockedBy": ["week-1-epic"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null, "existingNumber": 13
     },
     {
       "key": "rsbuild-migration",
