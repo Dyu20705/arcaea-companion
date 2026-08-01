@@ -70,6 +70,13 @@ jq -s -e '
       and ((.definitionOfDone // []) | length) > 0)
 ' "$ROOT"/roadmap/issues/*.json >/dev/null || fail 'an active managed issue lacks one type, one priority, ownership, hierarchy, scope, acceptance criteria, or DoD'
 
+printf 'test: managed bodies render type-specific closure contracts\n'
+grep -Fq 'def closure_contract($type):' "$ROOT/scripts/bootstrap-roadmap.sh" || fail 'roadmap renderer must define type-specific closure contracts'
+grep -Fq 'section("Work type and closure contract"; closure_contract(issue_type))' "$ROOT/scripts/bootstrap-roadmap.sh" || fail 'managed issue bodies must render their closure contract'
+for type_label in type:epic type:decision type:feature type:task type:qa type:docs; do
+  grep -Fq "\"$type_label\"" "$ROOT/scripts/bootstrap-roadmap.sh" || fail "missing managed closure contract for $type_label"
+done
+
 printf 'test: issue operating standard defines lifecycle and handoff\n'
 require_file docs/process/ISSUE_STANDARD.md
 grep -Fq 'Backlog / Icebox' "$ROOT/docs/process/ISSUE_STANDARD.md" || fail 'issue standard must define backlog state'
