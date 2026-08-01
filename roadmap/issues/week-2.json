@@ -14,7 +14,7 @@
       "acceptanceCriteria": ["Shell, design system, synthetic catalog loader, quality gate, and placeholder pipeline are integrated.", "No real Arcaea data or protected asset is present.", "A production build renders representative synthetic states."],
       "testPlan": [], "evidence": [],
       "definitionOfDone": ["Acceptance criteria are verified.", "Relevant documentation and tests are updated.", "No unreviewed legal, accessibility, security, performance, privacy, or publication exception is introduced."],
-      "parent": "web-mvp-roadmap", "blockedBy": ["product-requirements", "ui-research"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null
+      "parent": "web-mvp-roadmap", "blockedBy": ["week-1-epic"], "assignees": ["Dyu20705"], "state": "open", "stateReason": null
     },
     {
       "key": "repo-quality",
