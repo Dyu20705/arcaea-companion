@@ -4,7 +4,7 @@ Arcaea-Viewer is an unofficial, community-oriented Arcaea fan project.
 
 The current product direction is **Web MVP 0.1**: a fast, accessible, source-aware, static wiki for ordinary Arcaea players. The repository also preserves an existing Rust/WebAssembly chart parsing and rendering prototype, but that runtime work is not the public MVP focus.
 
-The longer-term direction is a broader fanmade player companion that can help players find inspiration, decide what to play, improve deliberately, and return to Arcaea through useful, explainable experiences. That direction is explicitly post-MVP and must not expand the current wiki release gate.
+A possible longer-term direction is a broader fan-made player companion that can help players find inspiration, decide what to play, improve deliberately, and return to Arcaea through useful, explainable experiences. This proposal is explicitly post-MVP and must not expand the current wiki release gate.
 
 > Arcaea-Viewer is not affiliated with, sponsored by, approved by, or endorsed by lowiro or the official Arcaea project.
 
@@ -40,6 +40,7 @@ Governing documents:
 - [Project charter](docs/product/PROJECT_CHARTER.md)
 - [Web MVP product brief](docs/product/WEB_MVP_BRIEF.md)
 - [Wiki benchmark and product guardrails](docs/product/WIKI_BENCHMARK_AND_PRODUCT_GUARDRAILS.md)
+- [Proposed player-companion post-MVP backlog](docs/product/PLAYER_COMPANION_POST_MVP_BACKLOG.md)
 - [Six-week Web MVP roadmap](docs/roadmap/WEB_MVP_ROADMAP.md)
 - [Contribution workflow](CONTRIBUTING.md)
 - [Workflow validation](docs/process/WORKFLOW_VALIDATION.md)
@@ -161,7 +162,7 @@ The current six-week sequence is:
 
 Runtime viewer, analytics, replay, personal progression, recommendation, production backend, and larger platform work remain outside the MVP critical path.
 
-After the wiki release, post-MVP work is separated into content scale/localization, player-companion, runtime/analysis, and optional platform-service programs. Each program requires measured user value and explicit legal, privacy, accessibility, security, performance, operations, and maintenance decisions.
+The proposed post-MVP taxonomy separates content scale/localization, player-companion, runtime/analysis, and optional platform-service programs. It is planning guidance, not active managed scope; each program requires measured user value, explicit legal/privacy/maintenance decisions, and a focused roadmap change before activation.
 
 ## Contributing
 
