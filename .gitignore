@@ -1,28 +1,9 @@
-# JavaScript / pnpm
 node_modules/
-.pnpm-store/
-apps/*/node_modules/
-apps/*/dist/
-
-# Rust
-target/
-crates/wasm/pkg/
-
-# Tests and coverage
-coverage/
-apps/*/playwright-report/
-apps/*/test-results/
-
-# Editors and agents
-.vscode/
-.agents/
-
-# Local development files
-test-script.txt
-
-# External/reference repositories
-ArcCreate/
-sekai-viewer/
-
-# Generated artifacts
-artifacts/
+dist/
+.vite/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

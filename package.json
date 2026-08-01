@@ -1,23 +1,28 @@
 {
   "name": "arcaea-viewer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.32.1",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "dev": "pnpm run wasm:build && pnpm --filter @arcaea-viewer/web dev",
-    "build": "pnpm run wasm:build && pnpm --filter @arcaea-viewer/web build",
-    "test": "pnpm run test:rust && pnpm run test:web",
-    "lint": "pnpm --filter @arcaea-viewer/web lint",
-    "fmt": "cargo fmt && pnpm --filter @arcaea-viewer/web fmt",
-    "check": "node tools/check.mjs",
-    "wasm:build": "wasm-pack build crates/wasm --target web --out-dir pkg",
-    "test:rust": "cargo test --workspace",
-    "test:web": "pnpm --filter @arcaea-viewer/web test"
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm run typecheck && pnpm run build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "wasm-pack": "0.15.0"
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.2",
+    "typescript": "5.9.3",
+    "vite": "7.3.0"
   }
 }
