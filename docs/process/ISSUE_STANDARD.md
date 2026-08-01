@@ -6,6 +6,8 @@ GitHub Issues are the durable record for product intent, defects, decisions, del
 
 This standard applies to public intake and roadmap-managed issues. It is intentionally proportional: a reproducible browser defect needs environment and reproduction evidence; a research or design issue needs a decision artifact and handoff, not fake runtime logs.
 
+Managed-workflow readiness, stage gates, status-label semantics, work-in-progress limits, schedule variance, closure sequencing, and reconciliation remain canonical in [Roadmap Operating Model](ROADMAP_OPERATING_MODEL.md). This standard owns public intake, title conventions, type-specific contracts, research/design handoff, and PR/closure evidence; it must not silently redefine the managed-workflow policy.
+
 ## 2. Sources of truth
 
 Use this precedence when records disagree:
@@ -33,9 +35,12 @@ Public intake uses intent-first prefixes:
 - `[Bug] ...`
 - `[Data correction] ...`
 - `[A11y] ...`
+- `[Research/Design] ...` only for combined intake awaiting triage;
 - `[Research] ...`
 - `[Design] ...`
 - `[Proposal] ...`
+
+Triage must replace `[Research/Design]` with `[Research]` or `[Design]` and assign exactly one corresponding `type:*` label before the issue is accepted into managed work or marked Ready.
 
 A title must name the affected behavior or decision. Avoid titles such as “broken,” “improve UI,” or “fix server.” Conventional Commit syntax is optional for issues because type, area, priority, phase, and workflow are represented by metadata.
 
@@ -161,7 +166,7 @@ GitHub Projects may present these states:
 
 A complex feature must not jump from Backlog directly to In Progress when unresolved design or policy would force invention. A small, bounded, reproducible bug may move directly to Ready for Development after triage when no design decision is needed.
 
-For a solo maintainer, keep at most one implementation issue and two independent research/decision issues in progress unless an exception and return condition are recorded.
+Apply the solo-maintainer WIP limits and exception process defined in [Roadmap Operating Model](ROADMAP_OPERATING_MODEL.md); this document does not maintain a competing numeric limit.
 
 ## 9. Handoff standard
 
