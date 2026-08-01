@@ -76,7 +76,19 @@ To minimize context switching and unfinished work:
 
 Exceptions require a written reason, owner, and return condition in the relevant issue or pull request.
 
-## 7. Execution and closure sequence
+## 7. Schedule variance and rebaselining
+
+Milestone due dates are forecasts, not completion evidence. When a phase remains open after its due date:
+
+1. record the variance on the phase epic using the original due date, current date, unfinished gate items, and known cause;
+2. keep the issue open and preserve the missed baseline instead of closing work to make the dashboard appear healthy;
+3. choose an explicit response: reduce scope, change capacity, or rebaseline the remaining milestones;
+4. record the reviewed forecast and the assumptions behind it;
+5. update milestone dates only through the canonical roadmap workflow and verify the resulting dependency schedule.
+
+Do not shift dates silently. When the remaining duration is unknown, write `UNKNOWN — REQUIRES VALIDATION`, finish the next decision-quality estimate, and then rebaseline. Historical baseline and actual completion evidence must remain recoverable from Git history and issue discussion.
+
+## 8. Execution and closure sequence
 
 Use this sequence for each non-epic issue:
 
@@ -93,7 +105,7 @@ Use this sequence for each non-epic issue:
 
 CI success is necessary but does not by itself prove the issue is Done.
 
-## 8. Drift and rollback
+## 9. Drift and rollback
 
 Before any roadmap write, run the read-only plan. After an authorized apply, run the same plan with authoritative relationship reconciliation and require only expected no-op or intentional skip results.
 
