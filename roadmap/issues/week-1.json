@@ -51,7 +51,8 @@
       "parent": "week-1-epic",
       "blockedBy": [],
       "assignees": ["Dyu20705"],
-      "state": "open",
+      "state": "closed",
+      "stateReason": "completed",
       "existingNumber": 3
     },
     {
@@ -67,7 +68,8 @@
       "parent": "week-1-epic",
       "blockedBy": [],
       "assignees": ["Dyu20705"],
-      "state": "open",
+      "state": "closed",
+      "stateReason": "completed",
       "existingNumber": 4
     },
     {
