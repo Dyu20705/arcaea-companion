@@ -1,23 +1,23 @@
 name: Product or feature proposal
 description: Propose an evidence-backed improvement aligned with the wiki-first MVP or an explicit post-MVP decision.
 title: "[Proposal] "
-labels: ["type:feature", "status:needs-decision"]
+labels: ["type:feature", "status:needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
         Arcaea-Viewer's current public goal is a fast, accessible, source-aware static fan wiki. Accounts, production backend services, chart upload/playback, analytics, replay collection, audio previews, and redistribution of unlicensed assets are outside the Web MVP unless a later decision explicitly approves them.
 
-        Describe the user problem first. A preferred implementation is useful, but it is not a substitute for evidence, scope boundaries, or acceptance criteria.
+        Describe the user problem first. A preferred implementation is useful, but it is not a substitute for evidence, scope boundaries, acceptance criteria, or a maintainable rollback path.
 
   - type: checkboxes
     id: preflight
     attributes:
       label: Preflight
       options:
-        - label: I searched existing issues and the managed roadmap for an equivalent proposal.
+        - label: I searched existing issues, accepted documents, and the managed roadmap for an equivalent proposal.
           required: true
-        - label: This proposal does not require publishing proprietary game files, copied third-party prose, secrets, or unlicensed media.
+        - label: This proposal does not require publishing proprietary game files, copied third-party prose, secrets, private data, or unlicensed media.
           required: true
 
   - type: textarea
@@ -26,6 +26,14 @@ body:
       label: User problem
       description: Who is affected, what are they trying to do, and what currently prevents or slows them?
       placeholder: Ordinary players need to ... but currently ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Expected impact and success signal
+      description: Describe the observable improvement and how maintainers could determine whether it is useful without invasive analytics.
     validations:
       required: true
 
@@ -67,6 +75,28 @@ body:
       required: true
 
   - type: textarea
+    id: scope
+    attributes:
+      label: Included scope
+      description: List the user-visible or system boundaries this proposal must own.
+      placeholder: |
+        - ...
+        - ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: non-goals
+    attributes:
+      label: Non-goals
+      description: State what this proposal explicitly will not implement, migrate, collect, publish, or redesign.
+      placeholder: |
+        - ...
+        - ...
+    validations:
+      required: true
+
+  - type: textarea
     id: acceptance-criteria
     attributes:
       label: Acceptance criteria
@@ -74,6 +104,14 @@ body:
       placeholder: |
         - [ ] ...
         - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and traceability
+      description: Link parent roadmap/epic items, blockers, required research/ADR/design artifacts, related issues, and downstream consumers. Use N/A with a reason when none exist.
     validations:
       required: true
 
@@ -89,7 +127,7 @@ body:
     id: ux-quality
     attributes:
       label: UX and quality requirements
-      description: Cover relevant loading, empty, error, offline, keyboard, responsive, zoom, reduced-motion, missing-media, performance, and rollback behavior. Use N/A with a reason where appropriate.
+      description: Cover relevant loading, empty, error, offline, keyboard, responsive, zoom, reduced-motion, missing-media, performance, security, observability, and rollback behavior. Use N/A with a reason where appropriate.
     validations:
       required: true
 
@@ -97,7 +135,7 @@ body:
     id: alternatives
     attributes:
       label: Alternatives and scope cuts
-      description: Describe workarounds, smaller options, rejected approaches, and what can be deferred.
+      description: Describe the status quo, workarounds, smaller options, rejected approaches, and what can be deferred.
     validations:
       required: true
 
@@ -109,10 +147,10 @@ body:
     validations:
       required: false
 
-  - type: upload
+  - type: textarea
     id: references
     attributes:
       label: Mockups or screenshots
-      description: Optional visual evidence. Do not upload copied UI/assets as a proposed implementation template.
+      description: Optional. Drag and drop sanitized visual evidence here. Do not upload copied UI/assets as an implementation template or permission source.
     validations:
       required: false
