@@ -10,13 +10,11 @@ export function AppShell() {
 
   return (
     <>
-      {/* cái này có cần thiết không vậy
       <a className="skip-link" href="#main-content">
         Skip to content
-      </a> */}
+      </a>
 
       <SiteHeader />
-
       <RouteTransitionManager mainRef={mainRef} />
 
       <main
