@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import type { SongSummary } from "./interaction-types";
 
 export interface SongRowProps {
@@ -34,14 +36,14 @@ export function SongRow({ song, href, selected = false }: SongRowProps) {
 
   if (navigable && href) {
     return (
-      <a
+      <Link
         className="av-song-row"
-        href={href}
+        to={href}
         data-selected={selected || undefined}
         aria-current={selected ? "page" : undefined}
       >
         <SongRowContent song={song} />
-      </a>
+      </Link>
     );
   }
 
