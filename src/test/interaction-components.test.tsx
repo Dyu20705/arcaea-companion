@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createElement, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { MemoryRouter } from "react-router";
 
 import { ContentCard } from "../ui/ContentCard";
 import { DifficultySelector } from "../ui/DifficultySelector";
@@ -18,7 +19,9 @@ function test(name: string, run: () => void) {
 }
 
 function render(element: ReactElement) {
-  return renderToStaticMarkup(element);
+  return renderToStaticMarkup(
+    createElement(MemoryRouter, null, element),
+  );
 }
 
 const song: SongSummary = {
@@ -156,7 +159,7 @@ test("SongCard is one link when navigable and no link when unavailable", () => {
   assert.doesNotMatch(unavailable, /<a/);
 });
 
-test("ContentCard uses a single anchor without nested controls", () => {
+test("ContentCard uses a single router link without nested controls", () => {
   const html = render(
     createElement(ContentCard, {
       title: "Browse packs",
