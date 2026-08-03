@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export interface ContentCardProps {
   title: string;
   description: string;
@@ -14,9 +16,9 @@ export function ContentCard({
   featured = false,
 }: ContentCardProps) {
   return (
-    <a
+    <Link
       className="av-content-card"
-      href={href}
+      to={href}
       data-featured={featured || undefined}
     >
       <strong>{title}</strong>
@@ -24,6 +26,6 @@ export function ContentCard({
       <b>
         {actionLabel} <span aria-hidden="true">→</span>
       </b>
-    </a>
+    </Link>
   );
 }
