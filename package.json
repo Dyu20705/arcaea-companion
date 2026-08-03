@@ -11,9 +11,8 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "check": "pnpm run typecheck && pnpm run build",
+    "test": "vite build --config vite.test.config.ts && node .test-dist/interaction-components.test.mjs",
+    "check": "pnpm run test && pnpm run typecheck && pnpm run build",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
