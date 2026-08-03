@@ -411,3 +411,34 @@ footer p {
     animation-iteration-count: 1 !important;
   }
 }
+
+.nav-toggle {
+  display: none;
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.primary-nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+@media (max-width: 50rem) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .primary-nav {
+    display: none;
+    width: 100%;
+  }
+
+  .primary-nav[data-open="true"] {
+    display: grid;
+  }
+}
