@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { createElement } from "react";
+import { createElement, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { ContentCard } from "../ui/ContentCard";
@@ -17,7 +17,7 @@ function test(name: string, run: () => void) {
   console.log(`✓ ${name}`);
 }
 
-function render(element: React.ReactElement) {
+function render(element: ReactElement) {
   return renderToStaticMarkup(element);
 }
 
@@ -54,6 +54,7 @@ test("FilterChip exposes selected and remove semantics", () => {
     createElement(FilterChip, {
       label: "Future",
       selected: true,
+      onSelectedChange: () => undefined,
       onRemove: () => undefined,
     }),
   );
@@ -114,11 +115,7 @@ test("SegmentedControl renders a labelled radio group", () => {
 });
 
 test("keyboard navigation skips disabled segmented options", () => {
-  const next = getNextEnabledIndex(
-    0,
-    1,
-    [false, true, false],
-  );
+  const next = getNextEnabledIndex(0, 1, [false, true, false]);
   assert.equal(next, 2);
 });
 
