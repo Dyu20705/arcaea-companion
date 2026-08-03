@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import type { SongSummary } from "./interaction-types";
 
 export interface SongCardProps {
@@ -35,14 +37,14 @@ export function SongCard({ song, href, selected = false }: SongCardProps) {
 
   if (navigable && href) {
     return (
-      <a
+      <Link
         className={className}
-        href={href}
+        to={href}
         data-selected={selected || undefined}
         aria-current={selected ? "page" : undefined}
       >
         <SongCardContent song={song} />
-      </a>
+      </Link>
     );
   }
 
