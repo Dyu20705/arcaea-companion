@@ -1,7 +1,4 @@
-import {
-  useRef,
-  type KeyboardEvent,
-} from "react";
+import { useRef, type KeyboardEvent } from "react";
 
 import {
   getBoundaryEnabledIndex,
@@ -25,7 +22,9 @@ export function SegmentedControl<T extends string>({
   disabled = false,
 }: SegmentedControlProps<T>) {
   const refs = useRef<Array<HTMLButtonElement | null>>([]);
-  const disabledOptions = options.map((option) => disabled || Boolean(option.disabled));
+  const disabledOptions = options.map(
+    (option) => disabled || Boolean(option.disabled),
+  );
   const selectedIndex = options.findIndex((option) => option.value === value);
   const fallbackIndex = getBoundaryEnabledIndex(disabledOptions, "first");
   const tabStopIndex =
@@ -71,7 +70,7 @@ export function SegmentedControl<T extends string>({
         return (
           <button
             key={option.value}
-            ref={(node) => {
+            ref={(node: HTMLButtonElement | null) => {
               refs.current[index] = node;
             }}
             type="button"
@@ -81,7 +80,9 @@ export function SegmentedControl<T extends string>({
             tabIndex={index === tabStopIndex ? 0 : -1}
             data-selected={selected || undefined}
             onClick={() => selectAndFocus(index)}
-            onKeyDown={(event) => handleKeyDown(index, event)}
+            onKeyDown={(event: KeyboardEvent<HTMLButtonElement>) =>
+              handleKeyDown(index, event)
+            }
           >
             {option.label}
           </button>
