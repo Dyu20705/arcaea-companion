@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 
 import { routes } from "../app/route-paths";
 import { DifficultySelector } from "../ui/DifficultySelector";
@@ -90,7 +90,9 @@ export function ExploreRoute() {
               <input
                 type="checkbox"
                 checked={futureSelected}
-                onChange={(event) => setFutureSelected(event.target.checked)}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  setFutureSelected(event.target.checked)
+                }
               />
               Future charts
             </label>
@@ -122,7 +124,9 @@ export function ExploreRoute() {
                 { value: "title", label: "Title A–Z" },
                 { value: "updated", label: "Recently updated" },
               ]}
-              onChange={(event) => setSort(event.target.value)}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setSort(event.target.value)
+              }
             />
 
             <SegmentedControl
