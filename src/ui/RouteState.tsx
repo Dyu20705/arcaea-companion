@@ -1,8 +1,27 @@
-export function RouteState({
-  viewModel,
-}: {
+import { Link } from "react-router";
+
+export type RouteStateKind =
+  | "loading"
+  | "empty"
+  | "unavailable"
+  | "error"
+  | "not-found";
+
+export interface RouteStateViewModel {
+  kind: RouteStateKind;
+  title: string;
+  description: string;
+  action?: {
+    href: string;
+    label: string;
+  };
+}
+
+export interface RouteStateProps {
   viewModel: RouteStateViewModel;
-}) {
+}
+
+export function RouteState({ viewModel }: RouteStateProps) {
   const isLoading = viewModel.kind === "loading";
   const isError = viewModel.kind === "error";
 
@@ -17,7 +36,7 @@ export function RouteState({
       <p>{viewModel.description}</p>
 
       {viewModel.action ? (
-        <Link to={viewModel.action.href}>
+        <Link className="secondary-action" to={viewModel.action.href}>
           {viewModel.action.label}
         </Link>
       ) : null}
