@@ -71,7 +71,7 @@ export function DifficultySelector({
         return (
           <button
             key={option.value}
-            ref={(node) => {
+            ref={(node: HTMLButtonElement | null) => {
               refs.current[index] = node;
             }}
             type="button"
@@ -85,7 +85,9 @@ export function DifficultySelector({
             data-selected={selected || undefined}
             data-unavailable={option.unavailable || undefined}
             onClick={() => selectAndFocus(index)}
-            onKeyDown={(event) => handleKeyDown(index, event)}
+            onKeyDown={(event: KeyboardEvent<HTMLButtonElement>) =>
+              handleKeyDown(index, event)
+            }
           >
             <span>{option.label}</span>
             <strong>{option.rating}</strong>
