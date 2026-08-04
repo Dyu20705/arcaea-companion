@@ -156,7 +156,7 @@ test("SongCard is one link when navigable and no link when unavailable", () => {
     }),
   );
   assert.match(available, /href="\/songs\/prism-echo-001"/);
-  assert.doesNotMatch(unavailable, /<a/);
+  assert.doesNotMatch(unavailable, /<a\b/i);
 });
 
 test("ContentCard uses a single router link without nested controls", () => {
