@@ -1,4 +1,4 @@
-// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Viewer-%E2%80%94-MVP-UI-Foundation?node-id=81-45
+// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Companion-%E2%80%94-MVP-UI-Foundation?node-id=81-45
 import figma from "figma";
 
 const instance = figma.selectedInstance;
@@ -23,5 +23,5 @@ export default {
     />
   `,
   imports: ['import { SegmentedControl } from "./src/ui/SegmentedControl"'],
-  id: "arcaea-viewer-segmented-control",
+  id: "arcaea-companion-segmented-control",
 };

@@ -11,20 +11,20 @@ export interface SongRowProps {
 function SongRowContent({ song }: { song: SongSummary }) {
   return (
     <>
-      <span className="av-song-row__media" aria-hidden="true">
+      <span className="ac-song-row__media" aria-hidden="true">
         <span />
       </span>
-      <span className="av-song-row__identity">
+      <span className="ac-song-row__identity">
         <strong>{song.title}</strong>
         <small>{song.artist}</small>
       </span>
-      <span className="av-song-row__pack">{song.pack}</span>
-      <b className="av-song-row__difficulty">{song.difficulty}</b>
-      <span className="av-song-row__bpm">{song.bpm}</span>
-      <span className={`av-status-badge av-status-badge--${song.status}`}>
+      <span className="ac-song-row__pack">{song.pack}</span>
+      <b className="ac-song-row__difficulty">{song.difficulty}</b>
+      <span className="ac-song-row__bpm">{song.bpm}</span>
+      <span className={`ac-status-badge ac-status-badge--${song.status}`}>
         {song.status}
       </span>
-      <span className="av-song-row__chevron" aria-hidden="true">
+      <span className="ac-song-row__chevron" aria-hidden="true">
         ›
       </span>
     </>
@@ -37,7 +37,7 @@ export function SongRow({ song, href, selected = false }: SongRowProps) {
   if (navigable && href) {
     return (
       <Link
-        className="av-song-row"
+        className="ac-song-row"
         to={href}
         data-selected={selected || undefined}
         aria-current={selected ? "page" : undefined}
@@ -49,7 +49,7 @@ export function SongRow({ song, href, selected = false }: SongRowProps) {
 
   return (
     <article
-      className="av-song-row"
+      className="ac-song-row"
       data-selected={selected || undefined}
       data-unavailable={song.status === "unavailable" || undefined}
       aria-disabled={song.status === "unavailable" || undefined}

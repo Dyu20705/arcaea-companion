@@ -15,13 +15,13 @@ export function FilterChip({
 }: FilterChipProps) {
   return (
     <span
-      className="av-filter-chip"
+      className="ac-filter-chip"
       data-selected={selected || undefined}
       data-disabled={disabled || undefined}
     >
       <button
         type="button"
-        className="av-filter-chip__toggle"
+        className="ac-filter-chip__toggle"
         aria-pressed={selected}
         disabled={disabled || !onSelectedChange}
         onClick={() => onSelectedChange?.(!selected)}
@@ -32,7 +32,7 @@ export function FilterChip({
       {selected && onRemove ? (
         <button
           type="button"
-          className="av-filter-chip__remove"
+          className="ac-filter-chip__remove"
           aria-label={`Remove ${label} filter`}
           disabled={disabled}
           onClick={onRemove}

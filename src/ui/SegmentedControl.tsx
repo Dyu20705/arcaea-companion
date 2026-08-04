@@ -62,7 +62,7 @@ export function SegmentedControl<T extends string>({
   }
 
   return (
-    <div className="av-segmented-control" role="radiogroup" aria-label={label}>
+    <div className="ac-segmented-control" role="radiogroup" aria-label={label}>
       {options.map((option, index) => {
         const selected = option.value === value;
         const optionDisabled = disabledOptions[index];

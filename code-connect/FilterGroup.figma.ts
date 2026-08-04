@@ -1,4 +1,4 @@
-// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Viewer-%E2%80%94-MVP-UI-Foundation?node-id=21-213
+// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Companion-%E2%80%94-MVP-UI-Foundation?node-id=21-213
 import figma from "figma";
 
 const instance = figma.selectedInstance;
@@ -26,5 +26,5 @@ export default {
     </FilterGroup>
   `,
   imports: ['import { FilterGroup } from "./src/ui/FilterGroup"'],
-  id: "arcaea-viewer-filter-group",
+  id: "arcaea-companion-filter-group",
 };
