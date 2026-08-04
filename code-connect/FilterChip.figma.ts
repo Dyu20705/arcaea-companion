@@ -1,4 +1,4 @@
-// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Viewer-%E2%80%94-MVP-UI-Foundation?node-id=21-193
+// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Companion-%E2%80%94-MVP-UI-Foundation?node-id=21-193
 import figma from "figma";
 
 const instance = figma.selectedInstance;
@@ -24,5 +24,5 @@ export default {
     />
   `,
   imports: ['import { FilterChip } from "./src/ui/FilterChip"'],
-  id: "arcaea-viewer-filter-chip",
+  id: "arcaea-companion-filter-chip",
 };

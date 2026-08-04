@@ -37,14 +37,14 @@ const song: SongSummary = {
 test("semantic tokens define Light and Dark interaction roles", () => {
   const css = readFileSync("src/styles/tokens.css", "utf8");
   for (const token of [
-    "--av-background-canvas",
-    "--av-background-interactive-hover",
-    "--av-background-interactive-pressed",
-    "--av-border-strong",
-    "--av-text-disabled",
-    "--av-action-primary",
-    "--av-action-pressed",
-    "--av-focus-ring",
+    "--ac-background-canvas",
+    "--ac-background-interactive-hover",
+    "--ac-background-interactive-pressed",
+    "--ac-border-strong",
+    "--ac-text-disabled",
+    "--ac-action-primary",
+    "--ac-action-pressed",
+    "--ac-focus-ring",
   ]) {
     assert.match(css, new RegExp(token));
   }

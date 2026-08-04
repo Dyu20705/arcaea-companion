@@ -17,7 +17,7 @@ export function ContentCard({
 }: ContentCardProps) {
   return (
     <Link
-      className="av-content-card"
+      className="ac-content-card"
       to={href}
       data-featured={featured || undefined}
     >

@@ -61,7 +61,7 @@ export function DifficultySelector({
 
   return (
     <div
-      className="av-difficulty-selector"
+      className="ac-difficulty-selector"
       role="radiogroup"
       aria-label={label}
     >

@@ -10,12 +10,12 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link className="brand" to={routes.home} aria-label="Arcaea Viewer home">
+        <Link className="brand" to={routes.home} aria-label="Arcaea Companion home">
           <span className="brand-mark" aria-hidden="true">
             ◇
           </span>
           <span className="brand-copy">
-            <strong>Arcaea Viewer</strong>
+            <strong>Arcaea Companion</strong>
             {/* <small>app version</small> */}
           </span>
         </Link>

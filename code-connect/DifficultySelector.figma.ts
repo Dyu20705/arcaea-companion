@@ -1,4 +1,4 @@
-// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Viewer-%E2%80%94-MVP-UI-Foundation?node-id=81-150
+// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Companion-%E2%80%94-MVP-UI-Foundation?node-id=81-150
 import figma from "figma";
 
 const instance = figma.selectedInstance;
@@ -27,5 +27,5 @@ export default {
     />
   `,
   imports: ['import { DifficultySelector } from "./src/ui/DifficultySelector"'],
-  id: "arcaea-viewer-difficulty-selector",
+  id: "arcaea-companion-difficulty-selector",
 };

@@ -25,9 +25,9 @@ export function SelectField({
   const errorId = error ? `${selectId}-error` : undefined;
 
   return (
-    <label className={`av-select-field ${className ?? ""}`} htmlFor={selectId}>
-      <span className="av-select-field__label">{label}</span>
-      <span className="av-select-field__control">
+    <label className={`ac-select-field ${className ?? ""}`} htmlFor={selectId}>
+      <span className="ac-select-field__label">{label}</span>
+      <span className="ac-select-field__control">
         <select
           {...selectProps}
           id={selectId}
@@ -43,7 +43,7 @@ export function SelectField({
         <span aria-hidden="true">⌄</span>
       </span>
       {error ? (
-        <span id={errorId} className="av-select-field__error">
+        <span id={errorId} className="ac-select-field__error">
           {error}
         </span>
       ) : null}

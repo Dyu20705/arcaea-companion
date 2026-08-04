@@ -1,4 +1,4 @@
-// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Viewer-%E2%80%94-MVP-UI-Foundation?node-id=22-83
+// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Companion-%E2%80%94-MVP-UI-Foundation?node-id=22-83
 import figma from "figma";
 
 const instance = figma.selectedInstance;
@@ -41,5 +41,5 @@ export default {
     />
   `,
   imports: ['import { SongCard } from "./src/ui/SongCard"'],
-  id: "arcaea-viewer-song-card",
+  id: "arcaea-companion-song-card",
 };
