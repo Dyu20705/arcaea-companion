@@ -1,156 +1,73 @@
-name: Product or feature proposal
-description: Propose an evidence-backed improvement aligned with the wiki-first MVP or an explicit post-MVP decision.
-title: "[Proposal] "
-labels: ["type:feature", "status:needs-triage"]
+name: Data or content correction
+description: Propose a source-backed correction to facts, provenance, labels, links, or original Wiki content.
+title: "[Data correction] "
+labels: ["type:docs", "area:data", "area:content", "status:needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Arcaea-Viewer's current public goal is a fast, accessible, source-aware static fan wiki. Accounts, production backend services, chart upload/playback, analytics, replay collection, audio previews, and redistribution of unlicensed assets are outside the Web MVP unless a later decision explicitly approves them.
-
-        Describe the user problem first. A preferred implementation is useful, but it is not a substitute for evidence, scope boundaries, acceptance criteria, or a maintainable rollback path.
+        Use this form for factual or editorial corrections. Do not paste proprietary chart/audio files, copied third-party prose, private evidence, or unlicensed media.
 
   - type: checkboxes
     id: preflight
     attributes:
       label: Preflight
       options:
-        - label: I searched existing issues, accepted documents, and the managed roadmap for an equivalent proposal.
+        - label: I searched existing issues and did not find the same correction.
           required: true
-        - label: This proposal does not require publishing proprietary game files, copied third-party prose, secrets, private data, or unlicensed media.
+        - label: This report contains no secrets, private data, proprietary game files, copied prose, or unlicensed media.
           required: true
 
-  - type: textarea
-    id: user-problem
+  - type: dropdown
+    id: entity-type
     attributes:
-      label: User problem
-      description: Who is affected, what are they trying to do, and what currently prevents or slows them?
-      placeholder: Ordinary players need to ... but currently ...
+      label: Affected entity or content type
+      options:
+        - Song, chart, pack, or release metadata
+        - Story chronology or summary
+        - World, course, achievement, network, or game mechanic
+        - Source or provenance record
+        - Link, route, or editorial text
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: entity-id
+    attributes:
+      label: Entity ID, route, or file
+      placeholder: sample-song-001, /wiki/music/..., or data/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-value
+    attributes:
+      label: Current value or behavior
+      description: Quote only the minimum necessary text or value and identify where it appears.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-value
+    attributes:
+      label: Proposed correction
+      description: State the corrected fact, wording, relationship, version applicability, or permission status.
+    validations:
+      required: true
+
+  - type: textarea
+    id: source-evidence
+    attributes:
+      label: Source evidence
+      description: Link authoritative or reviewable sources and explain what each source proves.
     validations:
       required: true
 
   - type: textarea
     id: impact
     attributes:
-      label: Expected impact and success signal
-      description: Describe the observable improvement and how maintainers could determine whether it is useful without invasive analytics.
+      label: Related records and validation
+      description: Identify affected aliases, reverse links, indexes, routes, assets, and checks needed to prove the correction is complete.
     validations:
       required: true
-
-  - type: dropdown
-    id: roadmap-fit
-    attributes:
-      label: Expected roadmap fit
-      description: Choose the closest scope boundary; maintainers may reclassify it.
-      options:
-        - Current static wiki MVP
-        - Post-MVP runtime, analytics, replay, or hosted platform
-        - Documentation, contribution, or repository process
-        - Not sure — requires product decision
-    validations:
-      required: true
-
-  - type: dropdown
-    id: area
-    attributes:
-      label: Primary area
-      options:
-        - Product or information architecture
-        - UI/UX or accessibility
-        - Frontend or browser behavior
-        - Static data, provenance, or content workflow
-        - Rust/WASM runtime prototype
-        - Performance, security, SEO, PWA, or release
-        - Community or contributor workflow
-        - Not sure
-    validations:
-      required: true
-
-  - type: textarea
-    id: proposal
-    attributes:
-      label: Proposed outcome
-      description: Describe observable behavior and the smallest useful end-to-end result. Avoid prescribing speculative infrastructure.
-    validations:
-      required: true
-
-  - type: textarea
-    id: scope
-    attributes:
-      label: Included scope
-      description: List the user-visible or system boundaries this proposal must own.
-      placeholder: |
-        - ...
-        - ...
-    validations:
-      required: true
-
-  - type: textarea
-    id: non-goals
-    attributes:
-      label: Non-goals
-      description: State what this proposal explicitly will not implement, migrate, collect, publish, or redesign.
-      placeholder: |
-        - ...
-        - ...
-    validations:
-      required: true
-
-  - type: textarea
-    id: acceptance-criteria
-    attributes:
-      label: Acceptance criteria
-      description: List objective, testable conditions that would prove the proposal is complete.
-      placeholder: |
-        - [ ] ...
-        - [ ] ...
-    validations:
-      required: true
-
-  - type: textarea
-    id: dependencies
-    attributes:
-      label: Dependencies and traceability
-      description: Link parent roadmap/epic items, blockers, required research/ADR/design artifacts, related issues, and downstream consumers. Use N/A with a reason when none exist.
-    validations:
-      required: true
-
-  - type: textarea
-    id: data-legal
-    attributes:
-      label: Data, source, privacy, and legal impact
-      description: Identify required records, sources, assets, permissions, personal data, hosted services, or external dependencies. Use N/A with a reason where appropriate.
-    validations:
-      required: true
-
-  - type: textarea
-    id: ux-quality
-    attributes:
-      label: UX and quality requirements
-      description: Cover relevant loading, empty, error, offline, keyboard, responsive, zoom, reduced-motion, missing-media, performance, security, observability, and rollback behavior. Use N/A with a reason where appropriate.
-    validations:
-      required: true
-
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives and scope cuts
-      description: Describe the status quo, workarounds, smaller options, rejected approaches, and what can be deferred.
-    validations:
-      required: true
-
-  - type: textarea
-    id: evidence
-    attributes:
-      label: Supporting evidence
-      description: Add official sources, user feedback, measurements, prototypes, related issues, or comparable products. Do not paste copyrighted content.
-    validations:
-      required: false
-
-  - type: upload
-    id: references
-    attributes:
-      label: Mockups or screenshots
-      description: Optional sanitized visual evidence. Do not upload copied UI/assets as an implementation template or permission source.
-    validations:
-      required: false

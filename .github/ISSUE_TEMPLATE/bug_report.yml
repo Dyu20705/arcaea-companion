@@ -1,14 +1,14 @@
 name: Bug report
-description: Report reproducible incorrect behavior in Arcaea-Viewer.
+description: Report reproducible incorrect behavior in Arcaea Companion.
 title: "[Bug] "
 labels: ["type:bug", "status:needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a problem. Arcaea-Viewer is currently building a static, source-aware fan-wiki MVP while preserving a separate Rust/WASM prototype for later evaluation.
+        Describe the smallest reproducible problem in Arcaea Companion.
 
-        Do not post secrets, private account data, proprietary chart or audio files, unlicensed assets, or sensitive security/licensing evidence in a public issue.
+        Do not post secrets, private account data, proprietary chart or audio files, unlicensed assets, or sensitive security/licensing evidence.
 
   - type: checkboxes
     id: preflight
@@ -24,39 +24,22 @@ body:
     id: area
     attributes:
       label: Affected area
-      description: Select the closest project surface.
       options:
-        - Public wiki UI or navigation
-        - Static catalog, content, or provenance
-        - Accessibility, responsive behavior, or performance
-        - Rust/WASM parser, timing, or renderer prototype
-        - Build, CI, release, or repository tooling
-        - Roadmap automation or managed GitHub issues
-        - Documentation or contributor workflow
+        - Application shell or navigation
+        - Home, Wiki, Tools, or About route
+        - Data, content, or provenance
+        - Accessibility or responsive behavior
+        - Build, CI, or repository tooling
+        - Documentation
         - Not sure
     validations:
       required: true
 
   - type: textarea
-    id: impact
+    id: actual-behavior
     attributes:
-      label: Impact, frequency, and scope
-      description: Explain who or what is affected, whether the task is blocked or degraded, how often it occurs, whether it is a regression, and any known workaround.
-      placeholder: |
-        - Impacted user/task:
-        - Frequency: always / intermittent / once
-        - Scope: one route/record/environment or broader
-        - Regression: yes/no/unknown; last known good version
-        - Workaround:
-    validations:
-      required: true
-
-  - type: textarea
-    id: current-behavior
-    attributes:
-      label: Actual behavior
-      description: Describe exactly what happened, including visible errors or incorrect data.
-      placeholder: What did you observe?
+      label: Actual behavior and impact
+      description: Explain what happened, who or what is affected, frequency, scope, and any workaround.
     validations:
       required: true
 
@@ -72,11 +55,10 @@ body:
     id: reproduction
     attributes:
       label: Minimal reproduction
-      description: Provide the smallest deterministic sequence that reproduces the problem. Include a minimal fixture or payload when safe and relevant.
       placeholder: |
         1. Start from commit/version ...
         2. Open route or run command ...
-        3. Use input or fixture ...
+        3. Perform ...
         4. Observe ...
     validations:
       required: true
@@ -85,47 +67,20 @@ body:
     id: environment
     attributes:
       label: Environment
-      description: Use N/A where a field does not apply.
       value: |
         - Commit, branch, app version, or deployment URL:
         - OS and version:
         - Browser and version:
         - Device or viewport:
-        - Node, pnpm, Rust, or wasm-pack version:
-        - Relevant feature flags, cache, or offline state:
+        - Node and pnpm versions, when relevant:
       render: markdown
     validations:
       required: true
 
   - type: textarea
-    id: source-evidence
+    id: evidence
     attributes:
-      label: Source or correctness evidence
-      description: For factual/content bugs, provide the official or reviewable source. For code bugs, provide the relevant fixture, test, specification, or invariant. Use N/A with a reason when not applicable.
-    validations:
-      required: true
-
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant logs, metrics, or traces
-      description: Paste only the minimal relevant output after removing tokens, local paths, account identifiers, and private information. Use N/A when no diagnostic output exists.
-      render: shell
-    validations:
-      required: false
-
-  - type: upload
-    id: screenshots
-    attributes:
-      label: Screenshots or recordings
-      description: Upload sanitized evidence only when it contains no private, proprietary, or unlicensed material.
-    validations:
-      required: false
-
-  - type: textarea
-    id: investigation
-    attributes:
-      label: Investigation notes
-      description: Optional. Include suspected cause, affected files/contracts, attempted fixes, bisect result, or a proposed failing regression test.
+      label: Evidence
+      description: Add sanitized logs, screenshots, fixtures, sources, or test output that demonstrate the problem.
     validations:
       required: false
