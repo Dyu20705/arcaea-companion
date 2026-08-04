@@ -88,6 +88,7 @@ test("FilterGroup exposes controlled disclosure state", () => {
   );
   assert.match(html, /aria-expanded="true"/);
   assert.match(html, /2 selected/);
+  assert.match(html, />Clear</);
 });
 
 test("SelectField retains native select semantics", () => {
