@@ -16,7 +16,7 @@ export function SiteHeader() {
           </span>
           <span className="brand-copy">
             <strong>Arcaea Viewer</strong>
-            <small>Synthetic prototype</small>
+            {/* <small>app version</small> */}
           </span>
         </Link>
 
