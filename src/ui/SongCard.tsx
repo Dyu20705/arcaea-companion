@@ -11,18 +11,18 @@ export interface SongCardProps {
 function SongCardContent({ song }: { song: SongSummary }) {
   return (
     <>
-      <span className="av-song-card__media" aria-hidden="true">
+      <span className="ac-song-card__media" aria-hidden="true">
         <span />
         <span />
         <span />
       </span>
-      <span className={`av-status-badge av-status-badge--${song.status}`}>
+      <span className={`ac-status-badge ac-status-badge--${song.status}`}>
         <span aria-hidden="true">◇</span>
         {song.status}
       </span>
-      <strong className="av-song-card__title">{song.title}</strong>
-      <span className="av-song-card__artist">{song.artist}</span>
-      <span className="av-song-card__metadata">
+      <strong className="ac-song-card__title">{song.title}</strong>
+      <span className="ac-song-card__artist">{song.artist}</span>
+      <span className="ac-song-card__metadata">
         <b>{song.difficulty}</b>
         <span>{song.pack}</span>
         <span>{song.bpm} BPM</span>
@@ -32,7 +32,7 @@ function SongCardContent({ song }: { song: SongSummary }) {
 }
 
 export function SongCard({ song, href, selected = false }: SongCardProps) {
-  const className = "av-song-card";
+  const className = "ac-song-card";
   const navigable = Boolean(href) && song.status !== "unavailable";
 
   if (navigable && href) {
