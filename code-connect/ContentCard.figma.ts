@@ -1,4 +1,4 @@
-// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Viewer-%E2%80%94-MVP-UI-Foundation?node-id=22-140
+// url=https://www.figma.com/design/QJGevc16EkYfnOttxan2iK/Arcaea-Companion-%E2%80%94-MVP-UI-Foundation?node-id=22-140
 import figma from "figma";
 
 const instance = figma.selectedInstance;
@@ -18,5 +18,5 @@ export default {
     />
   `,
   imports: ['import { ContentCard } from "./src/ui/ContentCard"'],
-  id: "arcaea-viewer-content-card",
+  id: "arcaea-companion-content-card",
 };
