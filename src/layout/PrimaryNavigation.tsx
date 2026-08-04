@@ -9,14 +9,12 @@ export interface PrimaryNavigationProps {
 
 const items = [
   { to: routes.home, label: "Home", end: true },
-  { to: routes.explore, label: "Explore", end: false },
-  { to: routes.status, label: "Status", end: false },
+  { to: routes.wiki, label: "Wiki", end: false },
+  { to: routes.tools, label: "Tools", end: false },
+  { to: routes.about, label: "About", end: false },
 ] as const;
 
-export function PrimaryNavigation({
-  open,
-  onNavigate,
-}: PrimaryNavigationProps) {
+export function PrimaryNavigation({ open, onNavigate }: PrimaryNavigationProps) {
   return (
     <nav
       id="primary-navigation"
@@ -30,12 +28,12 @@ export function PrimaryNavigation({
           to={item.to}
           end={item.end}
           onClick={onNavigate}
-          className={({ isActive }) =>
+          className={({ isActive }: { isActive: boolean }) =>
             `primary-nav__item${isActive ? " primary-nav__item--active" : ""}`
           }
         >
-          <span className="primary-nav__marker" aria-hidden="true" />
           {item.label}
+          <span className="primary-nav__indicator" aria-hidden="true" />
         </NavLink>
       ))}
     </nav>

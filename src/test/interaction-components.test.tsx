@@ -4,6 +4,11 @@ import { createElement, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MemoryRouter } from "react-router";
 
+import { navigationSections } from "../app/companion-data";
+import { routes } from "../app/route-paths";
+import { PrimaryNavigation } from "../layout/PrimaryNavigation";
+import { SectionSidebar } from "../layout/SectionSidebar";
+import { SiteHeader } from "../layout/SiteHeader";
 import { ContentCard } from "../ui/ContentCard";
 import { DifficultySelector } from "../ui/DifficultySelector";
 import { FilterChip } from "../ui/FilterChip";
@@ -18,9 +23,9 @@ function test(name: string, run: () => void) {
   console.log(`✓ ${name}`);
 }
 
-function render(element: ReactElement) {
+function render(element: ReactElement, initialEntries = ["/"]) {
   return renderToStaticMarkup(
-    createElement(MemoryRouter, null, element),
+    createElement(MemoryRouter, { initialEntries }, element),
   );
 }
 
@@ -45,6 +50,8 @@ test("semantic tokens define Light and Dark interaction roles", () => {
     "--ac-action-primary",
     "--ac-action-pressed",
     "--ac-focus-ring",
+    "--ac-difficulty-past-bg",
+    "--ac-difficulty-eternal-fg",
   ]) {
     assert.match(css, new RegExp(token));
   }
@@ -129,12 +136,7 @@ test("DifficultySelector keeps unavailable options visible and disabled", () => 
       options: [
         { value: "past", label: "PAST", rating: "3" },
         { value: "future", label: "FUTURE", rating: "9+" },
-        {
-          value: "beyond",
-          label: "BEYOND",
-          rating: "10",
-          unavailable: true,
-        },
+        { value: "beyond", label: "BEYOND", rating: "10", unavailable: true },
       ],
       onValueChange: () => undefined,
     }),
@@ -144,17 +146,8 @@ test("DifficultySelector keeps unavailable options visible and disabled", () => 
 });
 
 test("SongCard is one link when navigable and no link when unavailable", () => {
-  const available = render(
-    createElement(SongCard, {
-      song,
-      href: "/songs/prism-echo-001",
-    }),
-  );
-  const unavailable = render(
-    createElement(SongCard, {
-      song: { ...song, status: "unavailable" },
-    }),
-  );
+  const available = render(createElement(SongCard, { song, href: "/songs/prism-echo-001" }));
+  const unavailable = render(createElement(SongCard, { song: { ...song, status: "unavailable" } }));
   assert.match(available, /href="\/songs\/prism-echo-001"/);
   assert.doesNotMatch(unavailable, /<a\b/i);
 });
@@ -171,6 +164,62 @@ test("ContentCard uses a single router link without nested controls", () => {
   );
   assert.equal((html.match(/<a/g) ?? []).length, 1);
   assert.equal((html.match(/<button/g) ?? []).length, 0);
+});
+
+test("primary navigation exposes the approved top-level destinations", () => {
+  const html = render(createElement(PrimaryNavigation, { open: true }));
+  for (const label of ["Home", "Wiki", "Tools", "About"]) assert.match(html, new RegExp(`>${label}<`));
+  assert.doesNotMatch(html, />Explore</);
+  assert.doesNotMatch(html, />Status</);
+});
+
+test("header contains the product version and three action controls", () => {
+  const html = render(createElement(SiteHeader));
+  assert.match(html, /Arcaea Companion/);
+  assert.match(html, /v0\.1\.0/);
+  assert.match(html, /aria-label="No previous page"/);
+  assert.match(html, /aria-label="Settings — planned"/);
+  assert.match(html, /aria-label="Account — planned"/);
+});
+
+test("wiki sidebar is data-driven and includes nested parent-child navigation", () => {
+  const html = render(
+    createElement(SectionSidebar, {
+      section: navigationSections.wiki,
+      open: true,
+      onClose: () => undefined,
+    }),
+    [routes.wikiMusic],
+  );
+  assert.match(html, /Music Play/);
+  assert.match(html, /Categories/);
+  assert.match(html, /Story Mode/);
+  assert.match(html, /Elements/);
+});
+
+test("production UI source contains no design-export or assistant attribution markers", () => {
+  const sources = [
+    "src/layout/SiteHeader.tsx",
+    "src/layout/PrimaryNavigation.tsx",
+    "src/layout/SectionSidebar.tsx",
+    "src/routes/HomeRoute.tsx",
+    "src/routes/companion/MusicRoutes.tsx",
+    "src/routes/companion/StoryRoute.tsx",
+    "src/routes/companion/ToolsAboutRoutes.tsx",
+  ].map((path) => readFileSync(path, "utf8")).join("\n");
+  const markers = [
+    ["data", "node", "id"].join("-"),
+    ["Generated", "by"].join(" "),
+    ["AI", "generated"].join("-"),
+    ["Chat", "GPT"].join(""),
+    ["Open", "AI"].join(""),
+    ["Clau", "de"].join(""),
+    ["Co", "pilot"].join(""),
+    ["Figma", "MCP"].join(" "),
+  ];
+  for (const marker of markers) {
+    assert.doesNotMatch(sources, new RegExp(marker, "i"));
+  }
 });
 
 console.log("Interaction component contract tests passed.");

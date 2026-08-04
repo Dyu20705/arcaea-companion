@@ -1,11 +1,22 @@
 import { createBrowserRouter, type RouteObject } from "react-router";
 
 import { AppShell } from "../layout/AppShell";
-import { ExploreRoute } from "../routes/ExploreRoute";
+import {
+  AboutRoute,
+  AchievementsRoute,
+  CourseRoute,
+  ElementsRoute,
+  MusicRoute,
+  NetworkRoute,
+  NotFoundRoute,
+  SongDetailRoute,
+  StoryRoute,
+  ToolsRoute,
+  WikiOverviewRoute,
+  WorldRoute,
+} from "../routes/companion";
 import { HomeRoute } from "../routes/HomeRoute";
-import { NotFoundRoute } from "../routes/NotFoundRoute";
 import { RootRouteErrorBoundary } from "../routes/RootRouteErrorBoundary";
-import { RoutePlaceholder } from "../routes/RoutePlaceholder";
 
 export interface AppRouteHandler {
   title: string;
@@ -13,144 +24,9 @@ export interface AppRouteHandler {
   keywords: string[];
 }
 
-function routeHandle(
-  title: string,
-  description: string,
-  keywords: string[],
-): AppRouteHandler {
+function routeHandle(title: string, description: string, keywords: string[]): AppRouteHandler {
   return { title, description, keywords };
 }
-
-const placeholderRoutes: RouteObject[] = [
-  {
-    path: "musicPlay",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Music Play",
-      "The archive taxonomy route is registered for a later synthetic prototype.",
-      ["music", "archive", "taxonomy"],
-    ),
-  },
-  {
-    path: "storyMode",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Story Mode",
-      "Story information architecture remains blocked until an approved content scope exists.",
-      ["story", "mode"],
-    ),
-  },
-  {
-    path: "worldMode",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "World Mode",
-      "World hierarchy is registered without copying protected map or game-interface assets.",
-      ["world", "mode"],
-    ),
-  },
-  {
-    path: "courseMode",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Course Mode",
-      "Course structures will be validated with invented fixtures before data integration.",
-      ["course", "mode"],
-    ),
-  },
-  {
-    path: "achievements",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Achievements",
-      "Achievement presentation remains a registered, non-public prototype route.",
-      ["achievements"],
-    ),
-  },
-  {
-    path: "networkSystem",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Network System",
-      "Network and account behavior is outside the current frontend-only MVP.",
-      ["network", "account"],
-    ),
-  },
-  {
-    path: "elements",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Elements",
-      "Element and partner templates will use synthetic identity records first.",
-      ["elements", "partners"],
-    ),
-  },
-  {
-    path: "about",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "About",
-      "Project purpose, authorization boundaries, and attribution will live here.",
-      ["about", "authorization"],
-    ),
-  },
-  {
-    path: "status",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Status",
-      "Archive provenance, freshness, and availability reporting is registered for the status prototype.",
-      ["status", "availability"],
-    ),
-  },
-  {
-    path: "categories/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Category Detail",
-      "Synthetic category detail route.",
-      ["category", "detail"],
-    ),
-  },
-  {
-    path: "packs/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle("Pack Detail", "Synthetic pack detail route.", ["pack", "detail"]),
-  },
-  {
-    path: "songs/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle("Song Detail", "Synthetic song detail route.", ["song", "detail"]),
-  },
-  {
-    path: "acts/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle("Act Detail", "Synthetic act detail route.", ["act", "detail"]),
-  },
-  {
-    path: "parts/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle("Part Detail", "Synthetic part detail route.", ["part", "detail"]),
-  },
-  {
-    path: "chapters/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Chapter Detail",
-      "Synthetic chapter detail route.",
-      ["chapter", "detail"],
-    ),
-  },
-  {
-    path: "partners/:entityId",
-    Component: RoutePlaceholder,
-    handle: routeHandle(
-      "Partner Detail",
-      "Synthetic partner detail route.",
-      ["partner", "detail"],
-    ),
-  },
-];
 
 export const appRoutes: RouteObject[] = [
   {
@@ -161,30 +37,82 @@ export const appRoutes: RouteObject[] = [
       {
         index: true,
         Component: HomeRoute,
-        handle: routeHandle(
-          "Home",
-          "Synthetic-first archive home.",
-          ["home", "archive"],
-        ),
+        handle: routeHandle("Home", "Events, news, and entry points into Arcaea Companion.", ["home", "events", "news"]),
       },
       {
-        path: "explore",
-        Component: ExploreRoute,
-        handle: routeHandle(
-          "Explore",
-          "Search, filter, and inspect synthetic archive entries.",
-          ["explore", "search", "filter"],
-        ),
+        path: "wiki",
+        Component: WikiOverviewRoute,
+        handle: routeHandle("Wiki", "Structured Arcaea game reference.", ["wiki", "reference"]),
       },
-      ...placeholderRoutes,
+      {
+        path: "wiki/music",
+        Component: MusicRoute,
+        handle: routeHandle("Music Play", "Browse categories, packs, songs, and charts.", ["music", "packs", "songs"]),
+      },
+      {
+        path: "wiki/music/songs/:songId",
+        Component: SongDetailRoute,
+        handle: routeHandle("Song Detail", "Song metadata and chart difficulties.", ["song", "difficulty"]),
+      },
+      {
+        path: "wiki/story",
+        Component: StoryRoute,
+        handle: routeHandle("Story Mode", "Browse lore by act, part, story, and chapter.", ["story", "lore"]),
+      },
+      {
+        path: "wiki/world",
+        Component: WorldRoute,
+        handle: routeHandle("World Mode", "World chapter and map reference.", ["world", "maps"]),
+      },
+      {
+        path: "wiki/course",
+        Component: CourseRoute,
+        handle: routeHandle("Course Mode", "Course phases, charts, and rewards.", ["course", "phase"]),
+      },
+      {
+        path: "wiki/achievements",
+        Component: AchievementsRoute,
+        handle: routeHandle("Achievements", "Achievement conditions, points, XP, and notes.", ["achievements"]),
+      },
+      {
+        path: "wiki/network",
+        Component: NetworkRoute,
+        handle: routeHandle("Network System", "Friends and cloud-data mechanism reference.", ["network", "friends", "cloud"]),
+      },
+      {
+        path: "wiki/elements/:slug?",
+        Component: ElementsRoute,
+        handle: routeHandle("Elements", "Gameplay, scoring, interface, currency, partners, and Potential.", ["elements", "gameplay"]),
+      },
+      {
+        path: "tools",
+        Component: ToolsRoute,
+        handle: routeHandle("Tools", "Future utility development.", ["tools"]),
+      },
+      {
+        path: "about",
+        Component: AboutRoute,
+        handle: routeHandle("About", "Project information and support routes.", ["about"]),
+      },
+      {
+        path: "about/announcements",
+        Component: AboutRoute,
+        handle: routeHandle("Announcements", "Project announcements.", ["announcements"]),
+      },
+      {
+        path: "about/status",
+        Component: AboutRoute,
+        handle: routeHandle("Status", "Application and data status.", ["status"]),
+      },
+      {
+        path: "about/support",
+        Component: AboutRoute,
+        handle: routeHandle("Support", "Support and reporting guidance.", ["support"]),
+      },
       {
         path: "*",
         Component: NotFoundRoute,
-        handle: routeHandle(
-          "Not Found",
-          "The requested route does not exist.",
-          ["404"],
-        ),
+        handle: routeHandle("Not Found", "The requested route does not exist.", ["404"]),
       },
     ],
   },
