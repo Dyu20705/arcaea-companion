@@ -12,7 +12,8 @@
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "test": "vite build --config vite.test.config.ts && node .test-dist/interaction-components.test.mjs",
-    "check": "pnpm run test && pnpm run typecheck && pnpm run build",
+    "check:branding": "node scripts/check-branding.mjs",
+    "check": "pnpm run check:branding && pnpm run test && pnpm run typecheck && pnpm run build",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
