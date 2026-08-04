@@ -1,0 +1,112 @@
+name: Accessibility report
+description: Report a reproducible barrier involving keyboard, focus, semantics, assistive technology, zoom, motion, contrast, or responsive behavior.
+title: "[A11y] "
+labels: ["type:bug", "area:accessibility", "status:needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the blocked user task and the smallest reproducible flow. WCAG references are useful but not required from reporters.
+
+        Do not include private data, account details, proprietary game files, or unlicensed screenshots/media.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and did not find an equivalent accessibility report.
+          required: true
+        - label: The evidence is safe to publish and contains no private or unlicensed material.
+          required: true
+
+  - type: dropdown
+    id: barrier-type
+    attributes:
+      label: Barrier type
+      options:
+        - Keyboard access or focus management
+        - Screen reader semantics, names, roles, or announcements
+        - Contrast or non-color indication
+        - Text resize, zoom, reflow, or responsive layout
+        - Motion, animation, or reduced-motion behavior
+        - Pointer/touch target or input method
+        - Cognitive load, instructions, errors, or recovery
+        - Media alternative or alt text
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-task
+    attributes:
+      label: Blocked user task and impact
+      description: Explain what the user is trying to accomplish, whether the task is blocked or degraded, and how often it occurs.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open route/deployment ...
+        2. Use keyboard, zoom, or assistive technology ...
+        3. Navigate to ...
+        4. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected accessible behavior
+      description: Describe the behavior that would allow the task to be completed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: Describe the barrier, including focus position, announced text, clipping, motion, or input failure.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      value: |
+        - Commit, deployment URL, or app version:
+        - OS and version:
+        - Browser and version:
+        - Device or viewport:
+        - Zoom/text scale:
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: assistive-technology
+    attributes:
+      label: Assistive technology and input method
+      description: Include screen reader/version, keyboard, switch, voice control, touch, high contrast, reduced motion, or N/A with a reason.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and relevant standard
+      description: Optional sanitized screenshots/recordings, accessibility tree output, console details, or WCAG criterion.
+    validations:
+      required: false
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: State any known workaround and whether it restores the complete task. Use None if unavailable.
+    validations:
+      required: true
