@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavLink, useLocation } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 
 import type { NavigationSection } from "../app/companion-data";
 
@@ -96,20 +96,29 @@ export function SectionSidebar({ section, open, onClose }: SectionSidebarProps) 
               </div>
               {hasChildren && isExpanded ? (
                 <div className="section-tree__children">
-                  {node.children?.map((child) => (
-                    <NavLink
-                      key={child.label}
-                      to={child.to}
-                      onClick={onClose}
-                      className={({ isActive }: { isActive: boolean }) =>
-                        `section-tree__link section-tree__link--child${
-                          isActive ? " section-tree__link--active" : ""
-                        }`
-                      }
-                    >
-                      {child.label}
-                    </NavLink>
-                  ))}
+                  {node.children?.map((child, childIndex) => {
+                    const [childPath, childHashValue] = child.to.split("#", 2);
+                    const childHash = childHashValue ? `#${childHashValue}` : "";
+                    const isChildActive =
+                      location.pathname === childPath &&
+                      (childHash
+                        ? location.hash === childHash || (!location.hash && childIndex === 0)
+                        : true);
+
+                    return (
+                      <Link
+                        key={child.label}
+                        to={child.to}
+                        onClick={onClose}
+                        aria-current={isChildActive ? "page" : undefined}
+                        className={`section-tree__link section-tree__link--child${
+                          isChildActive ? " section-tree__link--active" : ""
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    );
+                  })}
                 </div>
               ) : null}
             </div>

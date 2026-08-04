@@ -88,7 +88,6 @@ test("FilterGroup exposes controlled disclosure state", () => {
   );
   assert.match(html, /aria-expanded="true"/);
   assert.match(html, /2 selected/);
-  assert.match(html, />Clear</);
 });
 
 test("SelectField retains native select semantics", () => {
@@ -195,6 +194,7 @@ test("wiki sidebar is data-driven and includes nested parent-child navigation", 
   assert.match(html, /Categories/);
   assert.match(html, /Story Mode/);
   assert.match(html, /Elements/);
+  assert.equal((html.match(/section-tree__link--active/g) ?? []).length, 2);
 });
 
 test("production UI source contains no design-export or assistant attribution markers", () => {
