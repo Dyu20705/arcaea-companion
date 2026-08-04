@@ -6,6 +6,8 @@ interface Props {
     mainRef: RefObject<HTMLElement | null>;
 }
 
+const productName = "Arcaea Companion";
+
 export function RouteTransitionManager({ mainRef }: Props) {
     // location has properties like pathname, search, hash, and state - reperents current URL
     const location = useLocation();
@@ -23,15 +25,15 @@ export function RouteTransitionManager({ mainRef }: Props) {
         [...matches]
             .reverse()
             .find((match) => match.handle?.title)
-            ?.handle?.title ?? "Arcaea Viewer";
+            ?.handle?.title ?? productName;
 
     // useEffect is a hook that runs after the component renders
     useEffect(() => {
         // set the document title to the current title
         document.title =
             currentTitle === "Home"
-            ? "Arcaea Viewer"
-            : `${currentTitle} - Arcaea Viewer`;
+            ? productName
+            : `${currentTitle} - ${productName}`;
     }, [currentTitle]);
 
     useEffect(() => {
