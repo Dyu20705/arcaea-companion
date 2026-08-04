@@ -23,21 +23,21 @@ export function FilterGroup({
 
   return (
     <section
-      className="av-filter-group"
+      className="ac-filter-group"
       data-expanded={expanded || undefined}
       data-disabled={disabled || undefined}
     >
-      <div className="av-filter-group__header">
+      <div className="ac-filter-group__header">
         <button
           type="button"
-          className="av-filter-group__trigger"
+          className="ac-filter-group__trigger"
           aria-expanded={expanded}
           aria-controls={contentId}
           disabled={disabled}
           onClick={() => onExpandedChange(!expanded)}
         >
           <span>{title}</span>
-          <span className="av-filter-group__count">
+          <span className="ac-filter-group__count">
             {selectedCount === 0 ? "0" : `${selectedCount} selected`}
           </span>
           <span aria-hidden="true">{expanded ? "⌃" : "⌄"}</span>
@@ -46,7 +46,7 @@ export function FilterGroup({
         {onClear && selectedCount > 0 ? (
           <button
             type="button"
-            className="av-filter-group__clear"
+            className="ac-filter-group__clear"
             disabled={disabled}
             onClick={onClear}
           >
@@ -57,7 +57,7 @@ export function FilterGroup({
 
       <div
         id={contentId}
-        className="av-filter-group__content"
+        className="ac-filter-group__content"
         hidden={!expanded}
       >
         {children}
