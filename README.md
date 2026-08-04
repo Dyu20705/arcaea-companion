@@ -1,6 +1,10 @@
-# Arcaea Viewer
+# Arcaea Companion
 
-> A fan wiki of Arcaea
+> An unofficial knowledge companion for Arcaea players.
+
+Arcaea Companion is a player-focused knowledge hub for exploring songs, packs, charts, partners, progression, and community-curated game information through a clear and accessible interface.
+
+This project is not affiliated with, sponsored by, approved by, or endorsed by lowiro.
 
 ## Development
 
